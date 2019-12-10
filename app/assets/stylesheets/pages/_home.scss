@@ -1,1 +1,26 @@
+.home-container {
+  padding: 40px 0 20px 0;
+}
+#home-container__text {
+  font-size: 24px;
+}
 
+.home-carousel__image {
+  height: 160px;
+  margin-bottom: 20px;
+}
+
+.carousel-item {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.carousel-item p {
+  font-family: 'Nunito';
+  font-size: 18px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
