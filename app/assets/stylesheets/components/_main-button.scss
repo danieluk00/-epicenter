@@ -2,7 +2,16 @@
   color: #FFFFFF;
   background-color: $main-color;
   text-align: center;
+  padding: 12px;
   margin-bottom: 20px;
   margin-top: 5px;
   border-radius: 4px;
+  width: 90vw;
+  font-size: 24px;
+  font-family: 'Nunito';
+}
+
+.main-button-container {
+  display: flex;
+  justify-content: center;
 }
