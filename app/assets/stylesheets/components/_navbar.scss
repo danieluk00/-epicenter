@@ -12,13 +12,13 @@
 }
 
 .nav-link-purple {
-  color: var(--main-color);
+  color: $main-color;
   font-family: roboto;
   font-size: 18px;
   font-weight: 900;
 }
 
 .nav-link-purple:hover {
-  color: var(--main-color);
+  color: $main-color;
   text-decoration: none;
 }

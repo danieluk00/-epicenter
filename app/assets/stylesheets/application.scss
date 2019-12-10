@@ -11,11 +11,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
-$main-color: #5F56F8;
-:root {
-  --main-color: #5F56F8;
-}
+@import "components/text.scss"
 
 .main-container {
   padding: 0 20px;
