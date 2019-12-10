@@ -6,11 +6,17 @@
     <title>TODO</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= render 'shared/navbar' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    <div class="main-container">
+      <%= yield %>
+    </div>
+    <%= render 'shared/main-button' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
