@@ -6,5 +6,6 @@ class EventsController < ApplicationController
   end
 
   def create
+    raise
   end
 end
