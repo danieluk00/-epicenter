@@ -1,8 +1,13 @@
-<% event =  Event.new %>
-<%= simple_form_for event do |f| %>
-  <%= f.input :username, label: 'Your username please', error: 'Username is mandatory, please specify one' %>
-  <%= f.input :password, hint: 'No special characters.' %>
-  <%= f.input :email, placeholder: 'user@domain.com' %>
-  <%= f.input :remember_me, inline_label: 'Yes, remember me' %>
-  <%= f.button :submit %>
-<% end %>
+<form class="form-new">
+  Give your event a name<br>
+  <input type="text" name="event-name"><br>
+  Time & date of event<br>
+  <input type="date" name="event_dt">
+  How long do guests have to register?<br>
+  <input type="date" name="lastname">
+  What's your name?<br>
+  <input type="text" name="name">
+  Where is your location?<br>
+  <input type="text" name="address">
+  <input type="button" class="main-button" value="Create Event">
+</form>
