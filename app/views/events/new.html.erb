@@ -1,0 +1,10 @@
+<!-- just its a trial version of the simple form for -->
+<%= simple_form_for [ @event, @user ] do |f| %>
+  <%= f.input :event_name, label: 'Give your event a name' %>
+  <%= f.input :start_dt, label: 'Time and date of event'%>
+  <%= f.input :registration_deadline, label: 'How long do guests has to register?'%>
+  <%= f.input :name, label: 'Whats your name?'%>
+  <%= f.input :address, label: 'Where is your location?'%>
+  <%= f.button :submit, class:"main-button" %>
+<% end %>
+
