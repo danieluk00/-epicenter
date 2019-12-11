@@ -1,8 +1,9 @@
 .home-container {
-  padding: 40px 0 20px 0;
+  padding: 10px 0 20px 0;
 }
 #home-container__text {
   font-size: 24px;
+  text-align: left;
 }
 
 .home-carousel__image {
@@ -11,7 +12,8 @@
 }
 
 .carousel-item {
-  margin-bottom: 30px;
+  margin-top: -20px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
