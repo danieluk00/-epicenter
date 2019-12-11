@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+require 'securerandom'
 
   def new
     @event = Event.new
@@ -7,6 +8,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(secure_params_event)
+    @event = Event.new(event_params)
+    @event.event_token = SecureRandom.hex(10)
     @event.save
     @user = User.new(secure_params_user)
     @user.event = @event
