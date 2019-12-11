@@ -1,17 +1,24 @@
+.main-container {
+  padding: 8vh 5vw 0 5vw;
+  height: 90vh;
+}
+
 .home-container {
-  padding: 40px 0 20px 0;
+  padding: 10px 0 20px 0;
 }
 #home-container__text {
-  font-size: 24px;
+  font-size: 3.3vh;
+  text-align: left;
 }
 
 .home-carousel__image {
-  height: 160px;
-  margin-bottom: 20px;
+  height: 19vh;
+  margin: 3vh;
 }
 
 .carousel-item {
-  margin-bottom: 30px;
+  margin-top: -20px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
