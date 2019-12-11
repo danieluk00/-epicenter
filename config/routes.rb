@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/share', to: 'pages#share'
   get 'howitworks', to: 'pages#howitworks'
+  get 'confirmation', to: 'pages#confirmation'
   get '/:event_token', to: 'pages#join'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
