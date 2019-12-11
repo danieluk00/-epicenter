@@ -15,8 +15,12 @@ function getTimeRemaining(endtime){
   };
 }
 
-function initializeClock(id, endtime){
-  var clock = document.getElementById(id);
+let clock = document.getElementById('clockdiv');
+
+if (clock) {
+
+function initializeClock(endtime){
+
   var timeinterval = setInterval(function(){
     var t = getTimeRemaining(endtime);
 
@@ -32,4 +36,7 @@ function initializeClock(id, endtime){
     }
   },1000);
 }
-initializeClock('clockdiv', deadline);
+
+initializeClock(deadline);
+
+}
