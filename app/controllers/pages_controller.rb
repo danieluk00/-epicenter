@@ -8,4 +8,8 @@ class PagesController < ApplicationController
   def join
     @event = Event.find(params[:event_token])
   end
+
+  def confirmation
+    
+  end
 end
