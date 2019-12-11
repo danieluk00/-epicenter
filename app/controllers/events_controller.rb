@@ -6,5 +6,15 @@ class EventsController < ApplicationController
   end
 
   def create
+
+    @event = Event.new()
   end
+
+  private
+
+  def secure_params
+    params.require(:event).permit(:event_name, :start_dt, :registration_deadline)
+    params.require(:user).permit(:name, :addres)
+  end
+
 end
