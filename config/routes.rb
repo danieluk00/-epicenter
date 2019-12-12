@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   resources :events, only: [:new, :create, :update]
-  resources :users, only: [:new, :create]
 
   get '/share', to: 'events#share'
   get 'howitworks', to: 'pages#howitworks'
