@@ -11,4 +11,10 @@
     <div id="clockdiv"></div>
     <h2 class="title-h2-center">Time left to join</h2>
 
+    <% if @organiser.token == params[:user] %>
+      <%= link_to(confirmation_path) do %>
+        <button class="main-button">End countdown now!</button>
+      <% end %>
+    <% end %>
+
 </div>

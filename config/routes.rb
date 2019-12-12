@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'howitworks', to: 'pages#howitworks'
   get 'confirmation', to: 'pages#confirmation'
   get '/waiting', to: 'pages#waiting'
-  get '/:event_token', to: 'events#join'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'events/:event_token', to: 'events#join'
+  get 'events/:event_token/users/new', to: 'users#new', as: 'new_user'
+  post 'events/:event_token/users/create', to: 'users#create', as: 'create_user'
 end
