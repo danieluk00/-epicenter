@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @user.token = SecureRandom.hex(10)
     @event = Event.find_by(event_token: params[:event_token])
     @user.event = @event
-    raise
     if @user.save
       redirect_to waiting_path + "?event=#{@event.event_token}&user=#{@user.token}"
     else
