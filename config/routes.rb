@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create]
   resources :users, only: [:new, :create]
 
-  get '/share', to: 'pages#share'
+  get '/share', to: 'events#share'
   get 'howitworks', to: 'pages#howitworks'
   get 'confirmation', to: 'pages#confirmation'
   get '/waiting', to: 'pages#waiting'
