@@ -22,12 +22,14 @@ require 'securerandom'
 
   def share
     @event = Event.find_by(event_token: params[:token])
+
   end
 
   def join
     @event = Event.find_by(event_token: params[:event_token])
     @organiser = User.find_by(event: @event, organiser: true)
     @users = User.where(event: @event)
+    @deadline
   end
 
   private

@@ -7,6 +7,7 @@
   <%= f.simple_fields_for [ @user ] do |u| %>
     <%= u.input :name, label: 'Whats your name?'%>
     <%= u.input :address, label: 'Where is your location?'%>
+    <%= u.input :email, label: 'Enter your e-mail'%>
   <% end  %>
   <%= f.button :submit, class:"main-button" %>
 <% end %>
