@@ -1,10 +1,10 @@
 <div class="home-container">
-  <h1 class="title-h1">Drinks after work</h1>
+  <h1 class="title-h1"><%= @event.event_name %></h1>
    <p class="form-label">Copy this link to share your event</p>
 </div>
 
 <div class="share-code">
-  <p>epicenter.live/52750b30ffbc7de3b362</p>
+  <p id="token">epicenter.live/<%= @event.event_token %></p>
 </div>
 
 <div class="main-button-container">
