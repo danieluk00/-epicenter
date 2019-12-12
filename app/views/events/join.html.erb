@@ -1,8 +1,8 @@
 <div class="join-wrapper">
 
     <div class="home-container">
-      <h1 class="title-h1">Drinks after work</h1>
-      <h2 class="title-h2" style="text-align: center"><strong>Elena Pérez</strong> has invited you to meet <strong>tomorrow at 20:00</strong>.</h2>
+      <h1 class="title-h1"><%= @event.event_name %></h1>
+      <h2 class="title-h2" style="text-align: center"><strong><%= @organiser.name %></strong> has invited you to meet <strong><%=@event.start_dt.to_formatted_s(:short) %></strong>.</h2>
     </div>
 
     <div class="image-container">
@@ -11,8 +11,13 @@
 
     <p class="title-h2" style="text-align: center">Who's joined so far?</p>
     <ul>
-      <li>Elena (organiser)</li>
-      <li>Daniel</li>
+      <% @users.each do |user| %>
+        <% if user.organiser == true %>
+          <li><%= user.name %> (Organiser) </li>
+        <% else %>
+          <li><%= user.name %></li>
+        <% end %>
+      <% end %>
     </ul>
 
     <p>Once everyone’s joined, we’ll calculate the central point and recommend a nearby venue that’s good for everyone.</p>
