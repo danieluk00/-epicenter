@@ -20,6 +20,8 @@ let clock = document.getElementById('clockdiv');
 
 function initializeClock(endtime){
 
+
+
   var timeinterval = setInterval(function(){
     var t = getTimeRemaining(endtime);
 
@@ -30,7 +32,7 @@ function initializeClock(endtime){
         clock.innerHTML = `<span class="clock"><span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m <span class="hour">${t.seconds}</span>s</span>`;
       }
     } else {
-       window.location.href = `/confirmation`
+        // window.location.href = `/confirmation`
     }
 
     if(t.total<=0){
