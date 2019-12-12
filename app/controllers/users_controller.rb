@@ -14,6 +14,18 @@ class UsersController < ApplicationController
       render :new
     end
   end
+ 
+  def index
+    @users = User.geocoded
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
+  end
+  
+  private
 
   def user_params
     params.require(:user).permit(:name, :address, :email)
