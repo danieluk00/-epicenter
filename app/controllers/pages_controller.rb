@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def join
-    @event = Event.find(params[:event_token])
+    # @event = Event.find(params[:event_token])
   end
 
   def confirmation
