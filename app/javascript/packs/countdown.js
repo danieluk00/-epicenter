@@ -17,18 +17,20 @@ function getTimeRemaining(endtime){
 
 let clock = document.getElementById('clockdiv');
 
-if (clock) {
 
 function initializeClock(endtime){
 
   var timeinterval = setInterval(function(){
     var t = getTimeRemaining(endtime);
 
-    if (t.days>0) {
-      clock.innerHTML = `<span class="clock"><span class="hour">${t.days}</span>d <span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m</span>`;
+    if (t >= 0) {
+      if (t.days>0) {
+        clock.innerHTML = `<span class="clock"><span class="hour">${t.days}</span>d <span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m</span>`;
+      } else {
+        clock.innerHTML = `<span class="clock"><span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m <span class="hour">${t.seconds}</span>s</span>`;
+      }
     } else {
-      clock.innerHTML = `<span class="clock"><span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m <span class="hour">${t.seconds}</span>s</span>`;
-
+       window.location.href = `/confirmation`
     }
 
     if(t.total<=0){
@@ -38,5 +40,3 @@ function initializeClock(endtime){
 }
 
 initializeClock(deadline);
-
-}

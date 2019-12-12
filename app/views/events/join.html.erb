@@ -31,7 +31,11 @@
     <h2 class="title-h2-centre">Time left to join</h2>
 
     <div class="main-button-container">
-      <button class="main-button">I'm in!</button>
+      <% if @organiser %>
+        <%= link_to(new_user_path) do %>
+          <button class="main-button">I'm in!</button>
+        <% end %>
+      <% end %>
     </div>
 
 </div>
