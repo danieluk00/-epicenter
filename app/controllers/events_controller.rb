@@ -29,7 +29,7 @@ require 'securerandom'
     @event.save
     raise
   end
-  
+
   def share
     @event = Event.find_by(event_token: params[:event])
   end
@@ -42,11 +42,11 @@ require 'securerandom'
   end
 
   private
-  
+
   def secure_params_event
     params.require(:event).permit(:event_name, :start_dt, :registration_deadline, :registration_deadline, :latitude, :longitude)
   end
-  
+
   def secure_params_user
     params_sec = params.require(:event).permit(user: [:name, :address])
     params_sec[:user]
