@@ -12,16 +12,26 @@ require 'securerandom'
     @event.save
     @user = User.new(secure_params_user)
     @user.event = @event
+    @user.token = SecureRandom.hex(10)
     @user.organiser = true
     if @user.save && @event.persisted?
-      redirect_to share_path + "?token=#{@event.event_token}"
+      redirect_to share_path + "?event=#{@event.event_token}&user=#{@user.token}"
     else
       render :new
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    @event.latitude = @event.epicentre[0]
+    @event.longitude = @event.epicentre[1]
+    @event.update(secure_params_event)
+    @event.save
+    raise
+  end
+  
   def share
-    @event = Event.find_by(event_token: params[:token])
+    @event = Event.find_by(event_token: params[:event])
   end
 
   def join
@@ -32,11 +42,11 @@ require 'securerandom'
   end
 
   private
-
+  
   def secure_params_event
-    params.require(:event).permit(:event_name, :start_dt, :registration_deadline, :registration_deadline)
+    params.require(:event).permit(:event_name, :start_dt, :registration_deadline, :registration_deadline, :latitude, :longitude)
   end
-
+  
   def secure_params_user
     params_sec = params.require(:event).permit(user: [:name, :address])
     params_sec[:user]

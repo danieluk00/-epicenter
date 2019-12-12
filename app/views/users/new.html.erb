@@ -1,0 +1,6 @@
+<%= simple_form_for @user, url: create_user_path(params[:event_token]) do |f| %>
+    <%= f.input :name, label: "What's your name?"%>
+    <%= f.input :email, label: "What's your email address?"%>
+    <%= f.input :address, label: "Where are you travelling from?"%>
+  <%= f.submit "Let's do this!", class:"main-button" %>
+<% end %>

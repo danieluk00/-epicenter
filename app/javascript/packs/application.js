@@ -6,6 +6,12 @@ initAutocomplete();
 
 import { getTimeRemaining, initializeClock } from './countdown';
 
-import { btnListener } from './share';
 
-btnListener();
+import { initMapbox } from '../plugins/init_mapbox';
+
+initMapbox();
+
+
+// import { btnListener } from './share';
+
+// btnListener();
