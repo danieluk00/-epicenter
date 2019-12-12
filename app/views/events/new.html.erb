@@ -6,6 +6,8 @@
   </div>
   <%= f.simple_fields_for [ @user ] do |u| %>
     <%= u.input :name, label: 'Whats your name?'%>
+    <%= u.input :address, label: 'Where is your location?'%>
+    <%= u.input :email, label: 'Enter your e-mail'%>
     <%= u.input :address, label: "Where are you travelling from?"%>
   <% end  %>
   <%= f.submit "Create your event", class:"main-button" %>

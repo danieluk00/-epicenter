@@ -1,5 +1,10 @@
-<div class="join-wrapper">
+<event
+  id="event-data"
+  data-deadline="<%= @event.created_at + @event.registration_deadline.minutes %>"
+  data-token="<%= @event.event_token %>">
+</event>
 
+<div class="join-wrapper">
     <div class="home-container">
       <h1 class="title-h1"><%= @event.event_name %></h1>
       <h2 class="title-h2" style="text-align: center"><strong><%= @organiser.name %></strong> has invited you to meet <strong><%=@event.start_dt.to_formatted_s(:short) %></strong>.</h2>
