@@ -20,6 +20,15 @@ require 'securerandom'
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    @event.latitude = @event.epicentre[0]
+    @event.longitude = @event.epicentre[1]
+    @event.update(secure_params_event)
+    @event.save
+    raise
+  end
+  
   def share
     @event = Event.find_by(event_token: params[:token])
   end
@@ -31,11 +40,11 @@ require 'securerandom'
   end
 
   private
-
+  
   def secure_params_event
-    params.require(:event).permit(:event_name, :start_dt, :registration_deadline, :registration_deadline)
+    params.require(:event).permit(:event_name, :start_dt, :registration_deadline, :registration_deadline, :latitude, :longitude)
   end
-
+  
   def secure_params_user
     params_sec = params.require(:event).permit(user: [:name, :address])
     params_sec[:user]
