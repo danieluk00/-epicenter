@@ -36,7 +36,6 @@ function initializeClock(endtime){
 
     if(t.total<=0){
       clearInterval(timeinterval);
-      window.location.href = "http://www.w3schools.com";
     }
   },1000);
 }
