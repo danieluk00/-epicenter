@@ -1,8 +1,9 @@
-<!-- just its a trial version of the simple form for -->
-<%= simple_form_for [ @event ] do |f| %>
+<%= simple_form_for @event do |f| %>
   <%= f.input :event_name, label: 'Give your event a name' %>
-  <%= f.datetime_field :start_dt, label: 'Time and date of event'%>
-  <%= f.datetime_field :registration_deadline, label: 'How long do guests has to register?'%>
+  <div class="form-group" class="inline">
+    <%= f.datetime_field :start_dt, label: 'Time and date of event'%>
+    <%= f.input :registration_deadline, collection: [ 3, 5, 10 ], label: 'How many minutes do guests has to register?' %>
+  </div>
   <%= f.simple_fields_for [ @user ] do |u| %>
     <%= u.input :name, label: 'Whats your name?'%>
     <%= u.input :address, label: 'Where is your location?'%>

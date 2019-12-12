@@ -13,8 +13,8 @@ require 'securerandom'
     @user = User.new(secure_params_user)
     @user.event = @event
     @user.organiser = true
-    if @user.save
-      redirect_to root_path
+    if @user.save && @event.persisted?
+      redirect_to share_path + "?token=#{@event.event_token}"
     else
       render :new
     end
@@ -29,6 +29,16 @@ require 'securerandom'
     raise
   end
   
+  def share
+    @event = Event.find_by(event_token: params[:token])
+  end
+
+  def join
+    @event = Event.find_by(event_token: params[:event_token])
+    @organiser = User.find_by(event: @event, organiser: true)
+    @users = User.where(event: @event)
+  end
+
   private
   
   def secure_params_event
