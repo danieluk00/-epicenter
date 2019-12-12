@@ -22,7 +22,6 @@ require 'securerandom'
 
   def share
     @event = Event.find_by(event_token: params[:token])
-
   end
 
   def join

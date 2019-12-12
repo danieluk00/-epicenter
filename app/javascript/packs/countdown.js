@@ -1,4 +1,7 @@
-var deadline = 'December 11 2019 23:59:59 GMT+0200';
+const eventData = document.getElementById('event-data');
+
+const deadline = eventData.dataset.deadline;
+const tokenEvent = eventData.dataset.token;
 
 function getTimeRemaining(endtime){
   var t = Date.parse(endtime) - Date.parse(new Date());
@@ -33,6 +36,7 @@ function initializeClock(endtime){
 
     if(t.total<=0){
       clearInterval(timeinterval);
+      window.location.href = "http://www.w3schools.com";
     }
   },1000);
 }
