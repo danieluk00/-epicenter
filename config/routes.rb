@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/share', to: 'events#share'
   get 'howitworks', to: 'pages#howitworks'
-  get 'confirmation', to: 'pages#confirmation'
+  get 'confirmation', to: 'pages#confirmation', as: :confirmation
   get '/waiting', to: 'pages#waiting'
   get 'events/:event_token', to: 'events#join'
   get 'events/:event_token/users/new', to: 'users#new', as: 'new_user'

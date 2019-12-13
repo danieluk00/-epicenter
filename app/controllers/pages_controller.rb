@@ -4,7 +4,16 @@ class PagesController < ApplicationController
 
 
   def confirmation
-
+    @markers = User.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+      }
+      @epicentre = {
+        lat: 38,
+        lng: 0,
+      }
+    end
   end
 
   def waiting

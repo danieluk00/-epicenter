@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   end
  
   def index
-    @users = User.geocoded
+    # finding the event
+    @event = Event.find_by(event_token: params[:event_token])
+
+    @users = @event.users
     @markers = @users.map do |user|
       {
         lat: user.latitude,
