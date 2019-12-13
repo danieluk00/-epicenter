@@ -2,11 +2,10 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const initMapbox = () => {
-  const mapElement = document.getElementById('map');
+  const mapElement = document.querySelector("#map");
+  console.log(mapElement.dataset)
   const markers = JSON.parse(mapElement.dataset.markers);
-  let epicentre = JSON.parse(mapElement.dataset.epicentre);
-  markers.push(epicentre)
-  console.log(markers)
+
 
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;

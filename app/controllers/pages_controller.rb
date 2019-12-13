@@ -7,13 +7,10 @@ class PagesController < ApplicationController
     @markers = User.geocoded.map do |user|
       {
         lat: user.latitude,
-        lng: user.longitude,
-      }
-      @epicentre = {
-        lat: 38,
-        lng: 0,
+        lng: user.longitude
       }
     end
+    p @markers.to_json
   end
 
   def waiting
