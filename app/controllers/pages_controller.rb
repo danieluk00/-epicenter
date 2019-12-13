@@ -10,8 +10,8 @@ class PagesController < ApplicationController
         lng: user.longitude,
       }
       @epicentre = {
-        lat: 38,
-        lng: 0,
+        lat: 41.405228,
+        lng: 2.164524,
       }
     end
   end
