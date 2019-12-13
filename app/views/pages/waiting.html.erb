@@ -1,8 +1,3 @@
-<event
-  id="event-data"
-  data-deadline="<%= @event.created_at + @event.registration_deadline.minutes %>"
-  data-token="<%= @event.event_token %>">
-</event>
 
 <div class="join-wrapper">
 
@@ -11,16 +6,15 @@
     </div>
 
     <div class="image-container">
-     <%= image_tag('waiting') %>
+     <%= image_tag('waiting.png') %>
     </div>
 
     <div id="clockdiv"></div>
     <h2 class="title-h2-center">Time left to join</h2>
 
-    <% if @organiser.token == params[:user] %>
       <%= link_to(confirmation_path) do %>
         <button class="main-button">End countdown now!</button>
       <% end %>
-    <% end %>
+
 
 </div>
