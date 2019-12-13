@@ -2,6 +2,7 @@
 const btnListener = () => {
 
   const copyToClipboard = () => {
+
     const el = document.createElement('textarea');
     el.value = document.getElementById('token').innerText;
     document.body.appendChild(el);
