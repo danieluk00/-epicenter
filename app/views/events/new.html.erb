@@ -2,7 +2,9 @@
   <%= f.input :event_name, label: 'Give your event a name' %>
   <div class="form-group" class="inline">
     <%= f.datetime_field :start_dt, label: 'Time and date of event'%>
-    <%= f.input :registration_deadline, collection: [ 3, 5, 10 ], label: 'How many minutes do guests has to register?' %>
+    <%= f.input :registration_deadline, collection: ["3 minutes", "1 hour",
+      "4 hours", "12 hours", "1 day", "3 days", "5 days" ],
+      label: 'How many minutes do guests has to register?' %>
   </div>
   <%= f.simple_fields_for [ @user ] do |u| %>
     <%= u.input :name, label: 'Whats your name?'%>
