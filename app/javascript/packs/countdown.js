@@ -1,4 +1,3 @@
-const eventData = document.getElementById('event-data');
 
 const joinWrapper = document.querySelector('.join-wrapper')
 
@@ -28,10 +27,12 @@ if (joinWrapper) {
   let clock = document.getElementById('clockdiv');
 
 
+
   function initializeClock(endtime){
 
     var timeinterval = setInterval(function(){
       var t = getTimeRemaining(endtime);
+
 
         if (t.days>0) {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.days}</span>d <span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m</span>`;
