@@ -15,6 +15,7 @@ require 'securerandom'
     @user.token = SecureRandom.hex(10)
     @user.organiser = true
     if @user.save && @event.persisted?
+      set_cookie
       redirect_to share_path + "?event=#{@event.event_token}&user=#{@user.token}"
     else
       render :new
@@ -39,6 +40,9 @@ require 'securerandom'
     @organiser = User.find_by(event: @event, organiser: true)
     @users = User.where(event: @event)
     @deadline
+    if cookies[:epicenter] == @event.event_token
+      redirect_to waiting_path
+    end
   end
 
   private
@@ -50,6 +54,10 @@ require 'securerandom'
   def secure_params_user
     params_sec = params.require(:event).permit(user: [:name, :address])
     params_sec[:user]
+  end
+
+  def set_cookie
+    cookies.permanent[:epicenter] = @event.event_token
   end
 
 end
