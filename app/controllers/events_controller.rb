@@ -41,7 +41,7 @@ require 'securerandom'
     @users = User.where(event: @event)
     @deadline
     if cookies[:epicenter] == @event.event_token
-      redirect_to waiting_path  + "?event=#{@event.event_token}&user=#{@user.token}"
+      redirect_to waiting_path + "?event=#{@event.event_token}&user=#{@user.token}"
     end
   end
 
