@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   def home
   end
 
-
   def confirmation
     @markers = User.geocoded.map do |user|
       {
