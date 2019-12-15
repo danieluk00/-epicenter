@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get 'events/:event_token', to: 'events#join'
   get 'events/:event_token/users/new', to: 'users#new', as: 'new_user'
   post 'events/:event_token/users/create', to: 'users#create', as: 'create_user'
+  post 'events/:event_token/', to: 'events#endwaiting', as: 'endwaiting'
 end

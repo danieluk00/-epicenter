@@ -11,6 +11,11 @@ const btnListener = () => {
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
+
+            sharecode.classList.add('animated','rubberBand')
+            setTimeout(function(){
+              sharecode.classList.remove('animated','rubberBand')
+            }, 1000);
           };
 
           document.querySelector('.main-button').addEventListener('click', e => {
