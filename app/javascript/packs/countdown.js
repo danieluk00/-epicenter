@@ -3,12 +3,10 @@ const joinWrapper = document.querySelector('.join-wrapper')
 
 if (joinWrapper) {
 
+  let id = joinWrapper.getAttribute('data-id');
   let dt = new Date(joinWrapper.getAttribute('data-time')).getTime();
-  console.log(dt)
   const time_left = joinWrapper.getAttribute('data-deadline');
   dt = dt + time_in_ms(time_left);
-
-  console.log(dt)
 
   //const deadline = eventData.dataset.deadline;
   const deadline = new Date(dt)
@@ -47,7 +45,10 @@ if (joinWrapper) {
     var timeinterval = setInterval(function(){
       var t = getTimeRemaining(endtime);
 
-        if (t.days>0) {
+        if (t.total==0) {
+          console.log('redirect')
+          window.location.replace("/confirmation?event="+id);
+        } else if (t.days>0) {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.days}</span>d <span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m</span>`;
         } else {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m <span class="hour">${t.seconds}</span>s</span>`;
@@ -60,7 +61,9 @@ if (joinWrapper) {
   }
 
   function time_in_ms(time_left) {
-    if (time_left=='3 minutes') {
+    if (time_left=='none') {
+      return 0;
+    } else if (time_left=='3 minutes') {
       return 3*60*1000;
     } else if (time_left=='1 hour') {
       return 1*60*60*1000;

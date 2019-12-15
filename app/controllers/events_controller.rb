@@ -31,6 +31,13 @@ require 'securerandom'
     redirect_to confirmation_path(@event)
   end
 
+  def endwaiting
+    @event = Event.find_by(event_token: params[:event_token])
+    @event.registration_deadline = 'none'
+    @event.save
+    redirect_to confirmation_path(@event) + "?event=#{@event.event_token}"
+  end
+
   def share
     @event = Event.find_by(event_token: params[:event])
   end
@@ -40,7 +47,7 @@ require 'securerandom'
     @organiser = User.find_by(event: @event, organiser: true)
     @users = User.where(event: @event)
     @deadline
-    if cookies[:epicenter] == @event.event_token
+    if cookies[:epicenter] == @event.event_token || cookies[:epicenter] == @event.event_token + 'organiser'
       redirect_to waiting_path + "?event=#{@event.event_token}"
     end
   end
@@ -57,7 +64,7 @@ require 'securerandom'
   end
 
   def set_cookie
-    cookies.permanent[:epicenter] = @event.event_token
+    cookies.permanent[:epicenter] = @event.event_token + 'organiser'
   end
 
 end
