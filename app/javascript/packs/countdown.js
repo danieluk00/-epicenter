@@ -1,4 +1,3 @@
-
 const joinWrapper = document.querySelector('.join-wrapper')
 
 if (joinWrapper) {
