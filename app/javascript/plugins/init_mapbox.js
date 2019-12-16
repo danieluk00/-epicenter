@@ -5,7 +5,6 @@ const map = document.getElementById('map');
 
 const initMapbox = () => {
   if (map) {
-
     const mapElement = document.getElementById('map');
     const markers = JSON.parse(mapElement.dataset.markers);
 
