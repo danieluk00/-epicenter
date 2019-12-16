@@ -48,7 +48,8 @@ require 'securerandom'
     @organiser = User.find_by(event: @event, organiser: true)
     @users = User.where(event: @event)
     @deadline
-    if cookies["event-#{@event.event_token}"]
+
+    if cookies["event+#{@event.event_token}"]
       redirect_to waiting_path + "?event=#{@event.event_token}"
     end
   end
@@ -65,7 +66,7 @@ require 'securerandom'
   end
 
   def set_cookie
-    cookies.permanent["event-#{@event.event_token}"] = 'true'
+    cookies.permanent["event+#{@event.event_token}"] = 'true'
   end
 
   def create_background_job

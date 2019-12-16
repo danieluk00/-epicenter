@@ -4,7 +4,11 @@
 </div>
 
 <div class="share-code">
-  <p id="token" style="word-wrap: break-word">http://epicenterapp.herokuapp.com/events/<%= @event.event_token %></p>
+  <% if Rails.env.production? %>
+    <p id="token" style="word-wrap: break-word">http://epicenter.live/events/<%= @event.event_token %></p>
+  <% else %>
+    <p id="token" style="word-wrap: break-word">localhost:3000/events/<%= @event.event_token %></p>
+  <% end %>
 </div>
 
 <div class="main-button-container">
