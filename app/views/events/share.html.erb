@@ -15,6 +15,12 @@
   <button class="main-button">Copy link</button>
 </div>
 
+<div style="text-align: center; margin-top: -10px; margin-bottom: 10px">
+  <%= link_to "Go to the waiting page", "/waiting" + "?event=#{@event.event_token}" %>
+</div>
+
+
 <div class="image-container">
  <%= image_tag('share.png') %>
 </div>
+
