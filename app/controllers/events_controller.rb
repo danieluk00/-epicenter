@@ -15,6 +15,7 @@ require 'securerandom'
     @user.token = SecureRandom.hex(10)
     @user.organiser = true
     if @user.save && @event.persisted?
+      create_background_job
       set_cookie
       redirect_to share_path + "?event=#{@event.event_token}&user=#{@user.token}"
     else
@@ -60,7 +61,7 @@ require 'securerandom'
   end
 
   def secure_params_user
-    params_sec = params.require(:event).permit(user: [:name, :address])
+    params_sec = params.require(:event).permit(user: [:name, :address, :email])
     params_sec[:user]
   end
 
@@ -68,4 +69,25 @@ require 'securerandom'
     cookies.permanent["event+#{@event.event_token}"] = 'true'
   end
 
+  def create_background_job
+    case @event.registration_deadline
+    when 'none'
+      delay = 5.seconds
+    when '3 minutes'
+      delay = 10.seconds
+    when '1 hour'
+      delay = 1.hour
+    when '4 hours'
+      delay = 4.hours
+    when '12 hours'
+      delay = 12.hours
+    when '1 day'
+      delay = 1.day
+    when '3 days'
+      delay = 3.days
+    when '5 days'
+      delay = 5.days
+    end
+    EnqueueEmailJob.set(wait: delay).perform_later(@event)
+  end
 end
