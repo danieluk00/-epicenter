@@ -3,14 +3,16 @@ class PagesController < ApplicationController
   end
 
   def confirmation
-    @markers = User.geocoded.map do |user|
+    @event = Event.find(id=3)
+    
+    @epicentre = {
+      lat: @event.latitude,
+      lng: @event.longitude,
+    }
+    @markers = @event.users.geocoded.map do |user|
       {
         lat: user.latitude,
         lng: user.longitude,
-      }
-      @epicentre = {
-        lat: 41.405228,
-        lng: 2.164524,
       }
     end
   end
