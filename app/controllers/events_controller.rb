@@ -23,14 +23,14 @@ require 'securerandom'
     end
   end
 
-  def update
-    @event = Event.find(params[:id])
-    @event.latitude = @event.epicentre[0]
-    @event.longitude = @event.epicentre[1]
-    @event.update(secure_params_event)
-    @event.save
-    redirect_to confirmation_path({event_id: @event})
-  end
+  # def update
+  #   @event = Event.find(params[:id])
+  #   @event.latitude = @event.epicentre[0]
+  #   @event.longitude = @event.epicentre[1]
+  #   @event.update(secure_params_event)
+  #   @event.save
+  #   redirect_to confirmation_path({event_id: @event})
+  # end
 
   def endwaiting
     @event = Event.find_by(event_token: params[:event_token])
