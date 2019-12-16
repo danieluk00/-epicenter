@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   def home
   end
 
-
   def confirmation
     @event = Event.find(id=3)
     
@@ -16,7 +15,6 @@ class PagesController < ApplicationController
         lng: user.longitude,
       }
     end
-    @markers.push(@epicentre)
   end
 
   def waiting
