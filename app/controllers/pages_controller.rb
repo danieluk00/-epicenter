@@ -13,6 +13,7 @@ class PagesController < ApplicationController
         lng: 2.164524,
       }
     end
+    p @markers.to_json
   end
 
   def waiting
