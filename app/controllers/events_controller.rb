@@ -57,7 +57,7 @@ require 'securerandom'
   private
 
   def secure_params_event
-    params.require(:event).permit(:event_name, :start_dt, :registration_deadline, :registration_deadline, :latitude, :longitude)
+    params.require(:event).permit(:venue_type, :event_name, :start_dt, :registration_deadline, :registration_deadline, :latitude, :longitude)
   end
 
   def secure_params_user
