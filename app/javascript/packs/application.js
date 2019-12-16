@@ -14,7 +14,6 @@ import { btnListener } from './share'
 
 btnListener();
 
+import { autocompleteAddress } from './get_current_location';
 
-// import { btnListener } from './share';
-
-// btnListener();
+autocompleteAddress();
