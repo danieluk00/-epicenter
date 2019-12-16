@@ -8,8 +8,6 @@ const initMapbox = () => {
 
     const mapElement = document.getElementById('map');
     const markers = JSON.parse(mapElement.dataset.markers);
-    let epicentre = JSON.parse(mapElement.dataset.epicentre);
-    markers.push(epicentre)
     console.log(markers)
 
     if (mapElement) {

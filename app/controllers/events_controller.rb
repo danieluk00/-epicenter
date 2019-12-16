@@ -27,7 +27,7 @@ require 'securerandom'
     @event.longitude = @event.epicentre[1]
     @event.update(secure_params_event)
     @event.save
-    redirect_to confirmation_path(@event)
+    redirect_to confirmation_path({event_id: @event})
   end
 
   def share
