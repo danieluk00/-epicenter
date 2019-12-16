@@ -4,23 +4,17 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const map = document.getElementById('map');
 
 const initMapbox = () => {
-  const mapElement = document.querySelector("#map");
-  const markers = JSON.parse(mapElement.dataset.markers);
+  if (map) {
 
-
-  if (mapElement) {
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
-
+    const mapElement = document.getElementById('map');
+    const markers = JSON.parse(mapElement.dataset.markers);
 
 
    // let epicentre = JSON.parse(mapElement.dataset.epicentre);
 
 
     //markers.push(epicentre)
+    console.log(markers)
 
     if (mapElement) {
       mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
