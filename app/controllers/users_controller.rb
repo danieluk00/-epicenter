@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def set_cookie
-    cookies.permanent[:epicenter] = @event.event_token
+    cookies.permanent["event-#{@event.event_token }"] = 'false'
   end
 
 end
