@@ -46,7 +46,6 @@ if (joinWrapper) {
       var t = getTimeRemaining(endtime);
 
         if (t.total==0) {
-          console.log('redirect')
           window.location.replace("/confirmation?event="+id);
         } else if (t.days>0) {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.days}</span>d <span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m</span>`;
@@ -61,7 +60,8 @@ if (joinWrapper) {
   }
 
   function time_in_ms(time_left) {
-    if (time_left=='none') {
+
+      if (time_left=='none') {
       return 0;
     } else if (time_left=='3 minutes') {
       return 3*60*1000;
