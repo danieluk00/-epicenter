@@ -73,7 +73,7 @@ require 'securerandom'
     when 'none'
       delay = 5.seconds
     when '3 minutes'
-      delay = 3.minutes
+      delay = 10.seconds
     when '1 hour'
       delay = 1.hour
     when '4 hours'
