@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def confirmation
     @event = Event.find(id=3)
-    
+
     @epicentre = {
       lat: @event.latitude,
       lng: @event.longitude,
