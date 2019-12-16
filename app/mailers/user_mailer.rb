@@ -7,8 +7,8 @@ class UserMailer < ApplicationMailer
   #
   def announce
    @event = params[:event] # Instance variable => available in view
-   emails = @event.users.map { |user| user.email }
-   emails.each { |email| mail(to: email, subject: 'Epicenter: the wait is over') }
+   @user = params[:user]
+   mail(to: @user.email, subject: 'Epicenter: the wait is over')
     # This will render a view in `app/views/user_mailer`!
   end
 end

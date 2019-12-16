@@ -87,6 +87,6 @@ require 'securerandom'
     when '5 days'
       delay = 5.days
     end
-    EnqueueEmailJob.set(wait: delay).perform_later(@event)
+    EnqueueEmailJob.set(wait: delay).perform_later(@event.event_token)
   end
 end
