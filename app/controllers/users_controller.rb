@@ -9,12 +9,13 @@ class UsersController < ApplicationController
     @event = Event.find_by(event_token: params[:event_token])
     @user.event = @event
     if @user.save
+      set_cookie
       redirect_to waiting_path + "?event=#{@event.event_token}&user=#{@user.token}"
     else
       render :new
     end
   end
- 
+
   def index
     # finding the event
     @event = Event.find_by(event_token: params[:event_token])
@@ -27,11 +28,15 @@ class UsersController < ApplicationController
       }
     end
   end
-  
+
   private
 
   def user_params
     params.require(:user).permit(:name, :address, :email)
+  end
+
+  def set_cookie
+    cookies.permanent[:epicenter] = @event.event_token
   end
 
 end

@@ -1,5 +1,5 @@
 
-<div class="join-wrapper">
+<div class="join-wrapper" data-time="<%=@event.created_at%>" data-deadline="<%=@event.registration_deadline%>" data-id="<%=@event.event_token%>">
 
     <div class="home-container">
       <h1 class="title-h1">Waiting for others to join</h1>
@@ -12,9 +12,10 @@
     <div id="clockdiv"></div>
     <h2 class="title-h2-center">Time left to join</h2>
 
-      <%= link_to(confirmation_path) do %>
-        <button class="main-button">End countdown now!</button>
-      <% end %>
-
+  <% if cookies[:epicenter] == @event.event_token + 'organiser' %>
+    <%= form_tag endwaiting_path(@event.event_token), method: :post do %>
+      <button class="main-button">End countdown now!</button>
+    <% end %>
+  <% end %>
 
 </div>
