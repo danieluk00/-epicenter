@@ -4,13 +4,23 @@
 </div>
 
 <div class="share-code">
-  <p id="token" style="word-wrap: break-word">http://epicenterapp.herokuapp.com/events/<%= @event.event_token %></p>
+  <% if Rails.env.production? %>
+    <p id="token" style="word-wrap: break-word">http://epicenter.live/events/<%= @event.event_token %></p>
+  <% else %>
+    <p id="token" style="word-wrap: break-word">localhost:3000/events/<%= @event.event_token %></p>
+  <% end %>
 </div>
 
 <div class="main-button-container">
   <button class="main-button">Copy link</button>
 </div>
 
+<div style="text-align: center; margin-top: -10px; margin-bottom: 10px">
+  <%= link_to "Go to the waiting page", "/waiting" + "?event=#{@event.event_token}" %>
+</div>
+
+
 <div class="image-container">
  <%= image_tag('share.png') %>
 </div>
+

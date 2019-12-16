@@ -23,14 +23,14 @@ require 'securerandom'
     end
   end
 
-  def update
-    @event = Event.find(params[:id])
-    @event.latitude = @event.epicentre[0]
-    @event.longitude = @event.epicentre[1]
-    @event.update(secure_params_event)
-    @event.save
-    redirect_to confirmation_path({event_id: @event})
-  end
+  # def update
+  #   @event = Event.find(params[:id])
+  #   @event.latitude = @event.epicentre[0]
+  #   @event.longitude = @event.epicentre[1]
+  #   @event.update(secure_params_event)
+  #   @event.save
+  #   redirect_to confirmation_path({event_id: @event})
+  # end
 
   def endwaiting
     @event = Event.find_by(event_token: params[:event_token])
@@ -48,7 +48,8 @@ require 'securerandom'
     @organiser = User.find_by(event: @event, organiser: true)
     @users = User.where(event: @event)
     @deadline
-    if cookies["event-#{@event.event_token}"]
+
+    if cookies["event+#{@event.event_token}"]
       redirect_to waiting_path + "?event=#{@event.event_token}"
     end
   end
@@ -56,7 +57,7 @@ require 'securerandom'
   private
 
   def secure_params_event
-    params.require(:event).permit(:event_name, :start_dt, :registration_deadline, :registration_deadline, :latitude, :longitude)
+    params.require(:event).permit(:venue_type, :event_name, :start_dt, :registration_deadline, :registration_deadline, :latitude, :longitude)
   end
 
   def secure_params_user
@@ -65,7 +66,7 @@ require 'securerandom'
   end
 
   def set_cookie
-    cookies.permanent["event-#{@event.event_token}"] = 'true'
+    cookies.permanent["event+#{@event.event_token}"] = 'true'
   end
 
   def create_background_job
