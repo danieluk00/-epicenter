@@ -3,9 +3,6 @@ const autocompleteAddress = () => {
   if (locationWrapper) {
     const icon = document.querySelector('.ap-input-icon.ap-icon-pin')
     icon.addEventListener("click", (event) => {
-      console.log(event);
-      console.log(event.currentTarget);
-
       navigator.geolocation.getCurrentPosition((position) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
