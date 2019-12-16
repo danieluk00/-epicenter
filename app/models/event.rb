@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   # private
 
   def calc_epicentre
-    if latitude && longitude 
+    if latitude && longitude
       return {lat: latitude, lng: longitude}
     end
 
@@ -22,8 +22,15 @@ class Event < ApplicationRecord
     event_longitude = (long_array.sort!.first + long_array.sort!.last) / 2
     event_latitude = (lat_array.sort!.first + lat_array.sort!.last) / 2
     update(latitude: event_latitude, longitude: event_longitude)
-  
-    return {lat: event_latitude, lng: event_longitude}
+    return { lat: event_latitude, lng: event_longitude }
+
+    # DON'T TOUCH THIS CODE!!!! IS FOR THE GOOGLE API
+    # @client = GooglePlaces::Client.new(ENV["GPLACES_API_KEY"])
+    # places = @client.spots(41.405530, 2.162080, :radius => 100, :types => ['bar'])
+    # places.each do |spot|
+    #   spot.name
+    # end
+
   end
 
   def epicentre
