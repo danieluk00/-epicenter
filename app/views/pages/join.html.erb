@@ -1,37 +1,32 @@
-<div class="join-wrapper" data-time="<%=@event.created_at%>" data-deadline="<%=@event.registration_deadline%>">
-
-    <div class="home-container">
-      <h1 class="title-h1">Drinks after work</h1>
-      <h2 class="title-h2" style="text-align: center"><strong>Elena Pérez</strong> has invited you to meet <strong>tomorrow at 20:00</strong>.</h2>
-    </div>
-
-    <div class="image-container">
-     <%= image_tag('having_fun.png') %>
-    </div>
-
-    <p class="title-h2" style="text-align: center">Who's joined so far?</p>
-    <ul>
-      <% @users.each do |user| %>
-        <% if user.organiser == true %>
-          <li><%= user.name %> (Organiser)</li>
-        <% else %>
-          <li><%= user.name %></li>
-        <% end %>
+xi<div class="join-wrapper" data-time="<%=@event.created_at%>" data-deadline="<%=@event.registration_deadline%>" data-id="<%=@event.event_token%>">
+  <div class="home-container">
+    <h1 class="title-h1"><%= @event.event_name %></h1>
+    <h2 class="title-h2" style="text-align: center"><strong><%= @organiser.name %></strong> has invited you to meet <strong><%=@event.start_dt.to_formatted_s(:short) %></strong>.</h2>
+  </div>
+  <div class="image-container">
+   <%= image_tag('having_fun.png') %>
+  </div>
+  <p class="title-h2" style="text-align: center">Who's joined so far?</p>
+  <ul>
+    <% @users.each do |user| %>
+      <% if user.organiser == true %>
+        <li><%= user.name %> (Organiser) </li>
+      <% else %>
+        <li><%= user.name %></li>
       <% end %>
-    </ul>
-
-    <p>Once everyone’s joined, we’ll calculate the central point and recommend a nearby venue that’s good for everyone.</p>
-
-    <div class="image-container">
-     <%= image_tag('dark_map') %>
-    </div>
-
-
-    <div id="clockdiv"></div>
-    <h2 class="title-h2-centre">Time left to join</h2>
-
-    <div class="main-button-container">
-      <button class="main-button">I'm in!</button>
-    </div>
-
+    <% end %>
+  </ul>
+  <p>Once everyone’s joined, we’ll calculate the central point and recommend a nearby venue that’s good for everyone.</p>
+  <div class="image-container">
+   <%= image_tag('dark_map.png') %>
+  </div>
+  <div id="clockdiv"></div>
+  <h2 class="title-h2-centre">Time left to join</h2>
+  <div class="main-button-container">
+    <% if @organiser %>
+      <%= link_to(new_user_path) do %>
+        <button class="main-button">I'm in!</button>
+      <% end %>
+    <% end %>
+  </div>
 </div>
