@@ -7,11 +7,9 @@
     <%= f.input :venue_type, as: :radio_buttons, collection: [['0', 'Bar'],['1', 'Cafe']],
      label_method: :second, label: 'Where do you want to meet?', checked: ['0', 'Bar'] %>
   </div>
-  <%= f.input :start_dt, required: true, input_html: {class: "datepicker"},
-  label: 'When does the event start?' %>
-
   <div class="form-group" class="inline">
-    <%= f.datetime_field :start_dt, label: 'When is the event?'%>
+    <%= f.input :start_dt, required: true, input_html: {class: "datepicker"},
+    label: 'When does the event start?' %>
     <%= f.input :registration_deadline, collection: ["3 minutes", "1 hour",
       "4 hours", "12 hours", "1 day", "3 days", "5 days" ],
       label: 'Choose how long guests have to join', selected: ["1 hour"] %>
