@@ -9,17 +9,6 @@
      <%= image_tag('waiting.png') %>
     </div>
 
-    <p class="title-h2" style="text-align: center">Who's joined so far?</p>
-    <ul>
-      <% @users.each do |user| %>
-        <% if user.organiser == true %>
-          <li><%= user.name %> (Organiser)</li>
-        <% else %>
-          <li><%= user.name %></li>
-        <% end %>
-      <% end %>
-    </ul>
-
     <div id="clockdiv"></div>
     <h2 class="title-h2-center">Time left to join</h2>
 
@@ -31,6 +20,6 @@
       <button class="main-button">End countdown now!</button>
     <% end %>
   <% end %>
-
+<% end %>
 
 </div>
