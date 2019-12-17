@@ -3,6 +3,8 @@ class EnqueueEmailJob < ApplicationJob
 
   def perform(event_token)
     event = Event.find_by(event_token: event_token)
-    UserMailer.with(event: event).announce
+    event.users.each do |user|
+      UserMailer.with(event: event, user: user).announce.deliver_now
+    end
   end
 end

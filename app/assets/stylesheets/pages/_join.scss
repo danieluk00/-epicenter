@@ -1,3 +1,4 @@
+
 .join-wrapper {
   text-align: center;
 }
@@ -32,6 +33,23 @@ img {
   text-align: center;
 }
 
-.ul{
-  list-style:none !important;
+ul{
+  list-style:none;
+  padding-left: 0;
 }
+
+.fas {
+  color: #5e56f8;
+  padding: 3px;
+}
+
+.joined-users {
+  margin: 50px 0px;
+  padding: 10px 0px 5px 0px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.join-padding {
+  padding-bottom: 25px;
+}
+

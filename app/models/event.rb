@@ -20,11 +20,12 @@ class Event < ApplicationRecord
       long_array.push(user.longitude)
       lat_array.push(user.latitude)
     end
-    # event_longitude = long_array.sum / long_array.count
-    # event_latitude = lat_array.sum / lat_array.count
-    event_longitude = (long_array.sort!.first + long_array.sort!.last) / 2
-    event_latitude = (lat_array.sort!.first + lat_array.sort!.last) / 2
+    event_longitude = long_array.sum / long_array.count
+    event_latitude = lat_array.sum / lat_array.count
     update(latitude: event_latitude, longitude: event_longitude)
+
+
+    return {lat: event_latitude, lng: event_longitude}
     return { lat: event_latitude, lng: event_longitude }
 
     # DON'T TOUCH THIS CODE!!!! IS FOR THE GOOGLE API
