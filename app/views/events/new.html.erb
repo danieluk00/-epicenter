@@ -2,7 +2,7 @@
   <%= f.input :venue_type, as: :radio_buttons, collection: [['0', 'Cafe'],['1', 'Bar']],
   label_method: :second, label: 'Where do you want to meet?' %>
   <%= f.input :event_name, label: 'Give your event a name' %>
-  <%= f.input :start_dt, required: true, input_html: {class: "datepicker"},
+  <%= f.input :start_dt,  as: :string, input_html: {class: "datepicker"},
   label: 'When does the event start?' %>
   <%= f.input :registration_deadline, collection: ["3 minutes", "1 hour",
       "4 hours", "12 hours", "1 day", "3 days", "5 days" ],
