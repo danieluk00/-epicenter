@@ -36,16 +36,15 @@ class Event < ApplicationRecord
     @client = GooglePlaces::Client.new(ENV["GPLACES_API_KEY"])
     places = @client.spots(event_latitude, event_longitude, :radius => 10000, :types => ['bar'])
 
+    short_list = places.sort_by { |place| place.rating }.reverse.first(5)
 
-    aux = places.sort_by { |place| place.rating }.reverse.first(5)
-
-
-    min_rating = 5
-    short_list = []
-    # while short_list.length < 3
-    #   #short_list =  { |place| place.rating.to_i >= min_rating }
-    #   min_rating -= 0.1
-    # end
+    self.latitude = short_list[0].lat
+    self.longitude = short_list[0].lng
+    short_list = short_list.map do |instance|
+      instance.to_h
+    end
+    self.possible_venues = JSON.stringify(short_list)
+    self.save
 
     # if final_place
     #   @event.place_id = final_place
