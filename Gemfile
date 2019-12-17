@@ -20,6 +20,7 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
 gem 'letter_opener', group: :development
+gem 'google_places'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
