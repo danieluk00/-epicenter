@@ -1,4 +1,4 @@
-  # This file is auto-generated from the current state of the database. Instead
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_153808) do
+ActiveRecord::Schema.define(version: 2019_12_17_161549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,14 +19,17 @@ ActiveRecord::Schema.define(version: 2019_12_13_153808) do
     t.string "event_name"
     t.string "venue_type"
     t.datetime "start_dt"
-    t.integer "place_id"
-    t.string "possible_venues"
     t.string "event_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
     t.string "registration_deadline"
+    t.string "venue_name"
+    t.string "venue_address"
+    t.string "venue_phone"
+    t.string "venue_photo_url"
+    t.float "venue_rating"
   end
 
   create_table "users", force: :cascade do |t|

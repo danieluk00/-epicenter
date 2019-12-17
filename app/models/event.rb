@@ -8,6 +8,7 @@ class Event < ApplicationRecord
 
   def calc_epicentre
     if latitude && longitude
+      set_instance_variables
       return {lat: latitude, lng: longitude}
     end
 
@@ -36,50 +37,35 @@ class Event < ApplicationRecord
     @client = GooglePlaces::Client.new(ENV["GPLACES_API_KEY"])
     places = @client.spots(event_latitude, event_longitude, :radius => 10000, :types => ['bar'])
 
-    short_list = places.sort_by { |place| place.rating }.reverse.first(5)
+    final_place = places.sort_by { |place| place.rating }.reverse.first(1)[0]
 
-    self.latitude = short_list[0].lat
-    self.longitude = short_list[0].lng
-    short_list = short_list.map do |instance|
-      instance.to_h
-    end
-    self.possible_venues = JSON.stringify(short_list)
-    self.save
+    # saving all the information of the final_place
+    self.latitude = final_place.lat
+    self.longitude = final_place.lng
+    self.venue_name = final_place.name
+    self.venue_address = final_place.formatted_address
+    self.venue_phone = final_place.formatted_phone_number
+    self.venue_photo_url = final_place.photos[0]
+    self.venue_rating =  final_place.rating
+    self.save!
 
-    # if final_place
-    #   @event.place_id = final_place
-
-
-      # @name = final_place.name
-      # @address = final_place.formatted_address
-      # @phone = final_place.formatted_phone_number
-      # @rating = final_place.rating
-      # @photo = final_place.photos
-
-    raise
-    # places.each do |spot|
-    #   spot.name
-    # end
-
-    #@event.save
+    set_instance_variables
 
 
-
-    # DON'T TOUCH THIS CODE!!!! IS FOR THE GOOGLE API
-    # we save the value in the database
-    # update(latitude: event_latitude, longitude: event_longitude)
-
-
-    return {lat: event_latitude, lng: event_longitude}
-    return { lat: event_latitude, lng: event_longitude }
-
-
-
+    return { lat: latitude, lng: longitude }
   end
 
   def epicentre
     return @epicentre if @epicentre
     @epicentre = calc_epicentre
+  end
+
+  def set_instance_variables
+    @name = self.venue_name
+    @address = self.venue_address
+    @phone = self.venue_phone
+    @photo = self.venue_photo_url
+    @rating = self.venue_rating
   end
 
 end
