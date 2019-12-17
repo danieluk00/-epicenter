@@ -5,12 +5,18 @@ if (joinWrapper) {
 
 
   let id = joinWrapper.getAttribute('data-id');
-  let dt = new Date(joinWrapper.getAttribute('data-time')).getTime();
-  console.log(`dt = ${dt}`);
+  let notWorkingDate = new Date(joinWrapper.getAttribute('data-time')).getTime();
   const time_left = joinWrapper.getAttribute('data-deadline');
-  console.log(`time_left = ${time_left}`)
+ 
+// *****************
+let dateArray = joinWrapper.getAttribute('data-time').split(' ');
+let dateRebuild = `${dateArray[0]}T${dateArray[1]}`;
+let dateIos = Date.parse(dateRebuild);
+
+// *****************
+
+dt = notWorkingDate ? notWorkingDate : dateIos;
   dt = dt + time_in_ms(time_left);
-  console.log(`new-dt = ${dt}`);
 
   //const deadline = eventData.dataset.deadline;
   const deadline = new Date(dt)
@@ -45,7 +51,6 @@ if (joinWrapper) {
   let clock = document.getElementById('clockdiv');
 
   function initializeClock(endtime){
-
     var timeinterval = setInterval(function(){
       var t = getTimeRemaining(endtime);
 
@@ -70,21 +75,19 @@ if (joinWrapper) {
   }
 
   function time_in_ms(time_left) {
-    if (time_left=='none') {
-      return 0;
-    } else if (time_left=='3 minutes') {
+    if( time_left ==='3 minutes' ) {
       return 3*60*1000;
-    } else if (time_left=='1 hour') {
+    } else if (time_left === '1 hour') {
       return 1*60*60*1000;
-    } else if (time_left=='4 hours') {
+    } else if (time_left === '4 hours') {
       return 4*60*60*1000;
-    } else if (time_left=='12 hours') {
+    } else if (time_left === '12 hours') {
       return 12*60*60*1000;
-    } else if (time_left=='1 day') {
+    } else if (time_left === '1 day') {
       return 24*60*60*1000;
-    } else if (time_left=='3 days') {
+    } else if (time_left === '3 days') {
       return 3*24*60*60*1000;
-    } else if (time_left=='5 days') {
+    } else if (time_left === '5 days') {
       return 5*24*60*60*1000;
     } else {
       return 0;

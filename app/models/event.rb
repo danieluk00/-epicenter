@@ -7,8 +7,6 @@ class Event < ApplicationRecord
   validates :registration_deadline, presence: true
 
 
-  # private
-
   def calc_epicentre
     if latitude && longitude
       set_instance_variables
