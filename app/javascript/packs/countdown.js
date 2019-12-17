@@ -3,6 +3,7 @@ const joinWrapper = document.querySelector('.join-wrapper')
 
 if (joinWrapper) {
 
+
   let id = joinWrapper.getAttribute('data-id');
   let notWorkingDate = new Date(joinWrapper.getAttribute('data-time')).getTime();
   const time_left = joinWrapper.getAttribute('data-deadline');
@@ -61,6 +62,11 @@ dt = notWorkingDate ? notWorkingDate : dateIos;
         } else {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m <span class="hour">${t.seconds}</span>s</span>`;
         }
+
+        // clock.classList.add('animated','pulse')
+        //   setTimeout(function(){
+        //     clock.classList.remove('animated','pulse')
+        //   }, 900);
 
         if(t.total<=0){
           clearInterval(timeinterval);
