@@ -17,3 +17,7 @@ btnListener();
 import { autocompleteAddress } from './get_current_location';
 
 autocompleteAddress();
+
+import "../plugins/flatpickr"
+
+
