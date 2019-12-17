@@ -1,3 +1,6 @@
+
+<h1 class="title-h1">Create your event</h1>
+
 <%= simple_form_for @event, html: { autocomplete: 'off' } do |f| %>
    <%= f.input :venue_type, as: :radio_buttons, collection: [['0', 'Cafe'],['1', 'Bar']],
    label_method: :second, label: 'Where do you want to meet?' %>
