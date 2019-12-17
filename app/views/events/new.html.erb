@@ -1,9 +1,14 @@
+
+<h1 class="title-h1">Create your event</h1>
+
 <%= simple_form_for @event, html: { autocomplete: 'off' } do |f| %>
   <%= f.input :event_name, label: 'Give your event a name' %>
   <div class="radio-inline">
     <%= f.input :venue_type, as: :radio_buttons, collection: [['0', 'Bar'],['1', 'Cafe']],
      label_method: :second, label: 'Where do you want to meet?', checked: ['0', 'Bar'] %>
   </div>
+  <%= f.input :start_dt, required: true, input_html: {class: "datepicker"},
+  label: 'When does the event start?' %>
 
   <div class="form-group" class="inline">
     <%= f.datetime_field :start_dt, label: 'When is the event?'%>

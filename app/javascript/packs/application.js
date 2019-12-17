@@ -1,4 +1,5 @@
 import "bootstrap";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { initAutocomplete } from "../plugins/init_autocomplete";
 
@@ -17,3 +18,7 @@ btnListener();
 import { autocompleteAddress } from './get_current_location';
 
 autocompleteAddress();
+
+import "../plugins/flatpickr"
+
+
