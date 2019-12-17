@@ -1,8 +1,11 @@
 class Event < ApplicationRecord
   has_many :users
 
-
+  validates :venue_type, presence: true
+  validates :event_name, presence: true
   validates :start_dt, presence: true
+  validates :registration_deadline, presence: true
+
 
   # private
 
