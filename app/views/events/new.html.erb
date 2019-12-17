@@ -2,15 +2,14 @@
 <h1 class="title-h1">Create your event</h1>
 
 <%= simple_form_for @event, html: { autocomplete: 'off' } do |f| %>
-   <%= f.input :venue_type, as: :radio_buttons, collection: [['0', 'Cafe'],['1', 'Bar']],
-   label_method: :second, label: 'Where do you want to meet?' %>
+  <%= f.input :venue_type, as: :radio_buttons, collection: [['0', 'Cafe'],['1', 'Bar']],
+  label_method: :second, label: 'Where do you want to meet?' %>
   <%= f.input :event_name, label: 'Give your event a name' %>
-  <div class="form-group" class="inline">
-    <%= f.datetime_field :start_dt, label: 'When is the event?'%>
-    <%= f.input :registration_deadline, collection: ["3 minutes", "1 hour",
+  <%= f.input :start_dt, required: true, input_html: {class: "datepicker"},
+  label: 'When does the event start?' %>
+  <%= f.input :registration_deadline, collection: ["3 minutes", "1 hour",
       "4 hours", "12 hours", "1 day", "3 days", "5 days" ],
       label: 'Choose how long guests have to join' %>
-  </div>
   <%= f.simple_fields_for [ @user ],html: { autocomplete: 'off' } do |u| %>
     <%= u.input :name, label: "What's your name?"%>
     <%= u.input :email, label: "What's your email address?"%>

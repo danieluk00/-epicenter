@@ -49,9 +49,10 @@ require 'securerandom'
     @users = User.where(event: @event)
     @deadline
 
-    if cookies["event+#{@event.event_token}"]
-      redirect_to waiting_path + "?event=#{@event.event_token}"
-    end
+    # if cookies["event+#{@event.event_token}"]
+    #   raise
+    #   redirect_to waiting_path + "?event=#{@event.event_token}"
+    # end
   end
 
   private
@@ -88,6 +89,6 @@ require 'securerandom'
     when '5 days'
       delay = 5.days
     end
-    EnqueueEmailJob.set(wait: delay).perform_later(@event)
+    EnqueueEmailJob.set(wait: delay).perform_later(@event.event_token)
   end
 end

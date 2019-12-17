@@ -1,3 +1,4 @@
+
 const joinWrapper = document.querySelector('.join-wrapper')
 
 if (joinWrapper) {
@@ -5,8 +6,11 @@ if (joinWrapper) {
 
   let id = joinWrapper.getAttribute('data-id');
   let dt = new Date(joinWrapper.getAttribute('data-time')).getTime();
+  console.log(`dt = ${dt}`);
   const time_left = joinWrapper.getAttribute('data-deadline');
+  console.log(`time_left = ${time_left}`)
   dt = dt + time_in_ms(time_left);
+  console.log(`new-dt = ${dt}`);
 
   //const deadline = eventData.dataset.deadline;
   const deadline = new Date(dt)
@@ -46,6 +50,7 @@ if (joinWrapper) {
       var t = getTimeRemaining(endtime);
 
         if (t.total==0) {
+          console.log('redirect')
           window.location.replace("/confirmation?event="+id);
         } else if (t.days>0) {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.days}</span>d <span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m</span>`;
@@ -65,34 +70,27 @@ if (joinWrapper) {
   }
 
   function time_in_ms(time_left) {
-
-    switch(time_left) {
-      case 'none':
-        return 0;
-        break;
-      case '3 minutes':
-        return 3*60*1000;
-        break;
-      case '1 hour':
-        return 1*60*60*1000;
-        break;
-      case '4 hours':
-        return 4*60*60*1000;
-        break;
-      case '12 hours':
-        return 12*60*60*1000;
-        break;
-      case '1 day':
-        return 24*60*60*1000;
-        break;
-      case '3 days':
-        return 3*24*60*60*1000;
-        break;
-      case '5 days':
-        return 5*24*60*60*1000;
-        break;
+    if (time_left=='none') {
+      return 0;
+    } else if (time_left=='3 minutes') {
+      return 3*60*1000;
+    } else if (time_left=='1 hour') {
+      return 1*60*60*1000;
+    } else if (time_left=='4 hours') {
+      return 4*60*60*1000;
+    } else if (time_left=='12 hours') {
+      return 12*60*60*1000;
+    } else if (time_left=='1 day') {
+      return 24*60*60*1000;
+    } else if (time_left=='3 days') {
+      return 3*24*60*60*1000;
+    } else if (time_left=='5 days') {
+      return 5*24*60*60*1000;
+    } else {
+      return 0;
     }
   }
+
 
   initializeClock(deadline);
 }
