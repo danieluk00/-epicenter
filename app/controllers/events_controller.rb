@@ -36,7 +36,7 @@ require 'securerandom'
     @event = Event.find_by(event_token: params[:event_token])
     @event.registration_deadline = 'none'
     @event.save
-    redirect_to confirmation_path(@event) + "?event=#{@event.event_token}"
+    # redirect_to confirmation_path(@event) + "?event=#{@event.event_token}"
   end
 
   def share
@@ -49,9 +49,10 @@ require 'securerandom'
     @users = User.where(event: @event)
     @deadline
 
-    if cookies["event+#{@event.event_token}"]
-      redirect_to waiting_path + "?event=#{@event.event_token}"
-    end
+    # if cookies["event+#{@event.event_token}"]
+    #   raise
+    #   redirect_to waiting_path + "?event=#{@event.event_token}"
+    # end
   end
 
   private
