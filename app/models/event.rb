@@ -4,8 +4,6 @@ class Event < ApplicationRecord
 
   validates :start_dt, presence: true
 
-  # private
-
   def calc_epicentre
     if latitude && longitude
       return {lat: latitude, lng: longitude}
