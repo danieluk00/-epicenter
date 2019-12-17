@@ -1,5 +1,3 @@
-
-
 <div class="join-wrapper" data-time="<%=@event.created_at%>" data-deadline="<%=@event.registration_deadline%>" data-id="<%=@event.event_token%>">
     <div class="home-container">
       <h1 class="title-h1"><%= @event.event_name %></h1>
@@ -14,7 +12,7 @@
     <ul>
       <% @users.each do |user| %>
         <% if user.organiser == true %>
-          <li><%= user.name %> (Organiser) </li>
+          <li><%= user.name %> (Organiser)</li>
         <% else %>
           <li><%= user.name %></li>
         <% end %>
