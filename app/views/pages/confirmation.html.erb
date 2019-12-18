@@ -7,17 +7,23 @@
 </div>
 
 <% if @event.venue_name %>
-  <h2><%= @event.venue_name %></h2>
+  <h2 class="title-h2 confirmation-h2__styling"><%= @event.venue_name %></h2>
 <% else %>
-  <h2>Sorry, we couldn´t find any venues</h2>
+  <h2 class="title-h2">Sorry, we couldn´t find any venues</h2>
 <% end %>
 
 <% if @event.venue_rating %>
-  <p><%= @event.venue_rating %></h2>
+  <% rating = @event.venue_rating.to_i %>
+  <div class="rating-wrapper">
+    <p class="confirmation-rating"><%= "#{ @event.venue_rating }" %></p>
+  <% rating.times do %>
+    <span class="confirmation-stars">👌</span> 
+  <% end %>
+  </div>
 <% end %>
 
 <% if @event.venue_photo_url? %>
-   <%= image_tag @event.venue_photo_url %>
+   <%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
 <% end %>
 
 <% if @event.venue_address %>
@@ -31,5 +37,4 @@
 <% if @event.venue_map_link %>
   <%= @event.venue_map_link %>
 <% end %>
-
 
