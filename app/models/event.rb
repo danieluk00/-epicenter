@@ -8,10 +8,10 @@ class Event < ApplicationRecord
 
 
   def calc_epicentre
-    # if latitude && longitude
-    #   set_instance_variables
-    #   return {lat: latitude, lng: longitude}
-    # end
+    if latitude && longitude
+      set_instance_variables
+      return {lat: latitude, lng: longitude}
+    end
 
     # 1st calculating epicenter
     long_array = []
