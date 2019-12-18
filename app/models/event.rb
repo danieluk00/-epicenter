@@ -37,18 +37,22 @@ class Event < ApplicationRecord
       places = @client.spots(event_latitude, event_longitude, :radius => radius, :types => [venue_type.downcase])
       radius = radius * 2
     end
-
+    
+    # most_ratings = places.sort_by { |place| place.user_ratings_total }.reverse
     final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(1)[0]
+
+    # raise
+    
 
     # saving all the information of the final_place
     latitude = final_place.lat
     longitude = final_place.lng
     self.venue_name = final_place.name
-    self.venue_address = final_place.formatted_address
+    self.venue_address = final_place.vicinity
     self.venue_phone = final_place.formatted_phone_number
     self.venue_photo_url = final_place.photos[0].fetch_url(800)
     self.venue_rating =  final_place.rating
-    self.venue_map_link = final_place.photos[0].html_attributions[0]
+    self.venue_map_link = final_place.place_id
     self.save
 
     return { lat: latitude, lng: longitude }
