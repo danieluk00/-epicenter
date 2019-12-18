@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.token = SecureRandom.hex(10)
     @event = Event.find_by(event_token: params[:event_token])
+    @user.organiser = false
     @user.event = @event
     if @user.save
       set_cookie
