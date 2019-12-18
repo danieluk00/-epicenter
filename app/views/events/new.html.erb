@@ -7,9 +7,7 @@
       <div>
         <%= f.input :venue_type, as: :radio_buttons, item_wrapper_class: 'form-radio',  collection: [['0', 'Bar'],['1', 'Cafe']],
          label_method: :second, label: 'Where do you want to meet?', checked: ['0', 'Bar'] %>
-
       </div>
-
 
    <%= f.input :start_dt, required: true, input_html: {class: "datepicker form-control"},
     label: 'When does the event start?' %>

@@ -9,12 +9,12 @@ require 'securerandom'
   def create
     @event = Event.new(secure_params_event)
     @event.event_token = SecureRandom.hex(10)
-    @event.save
     @user = User.new(secure_params_user)
     @user.event = @event
     @user.token = SecureRandom.hex(10)
     @user.organiser = true
-    if @user.save && @event.persisted?
+    @user.included_in_epicenter = true
+    if @user.save && @event.save
       create_background_job
       set_cookie
       redirect_to share_path + "?event=#{@event.event_token}&user=#{@user.token}"

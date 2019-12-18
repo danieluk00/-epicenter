@@ -5,3 +5,36 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
+<% if @event.venue_name %>
+  <h2 class="title-h2 confirmation-h2__styling"><%= @event.venue_name %></h2>
+<% else %>
+  <h2 class="title-h2">Sorry, we couldn´t find any venues</h2>
+<% end %>
+
+<% if @event.venue_rating %>
+  <% rating = @event.venue_rating.to_i %>
+  <div class="rating-wrapper">
+    <p class="confirmation-rating"><%= "#{ @event.venue_rating }" %></p>
+  <% rating.times do %>
+    <span class="confirmation-stars">👌</span> 
+  <% end %>
+  </div>
+<% end %>
+
+<% if @event.venue_photo_url? %>
+   <%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
+<% end %>
+
+<% if @event.venue_address %>
+  <p><%= @event.venue_address %></h2>
+<% end %>
+
+<% if @event.venue_phone %>
+  <p><%= @event.venue_phone %></h2>
+<% end %>
+
+<% if @event.venue_map_link %>
+  <%= @event.venue_map_link %>
+<% end %>
+

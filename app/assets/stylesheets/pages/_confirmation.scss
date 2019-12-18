@@ -2,3 +2,27 @@
   width: 100%;
   height: 200px;
 }
+
+.confirmation-h2__styling {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.confirmation-image {
+  width: 100%;
+}
+
+.rating-wrapper {
+  display: flex;
+  align-items: baseline;
+  font-family: "Nunito";
+}
+
+.confirmation-rating {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.confirmation-stars {
+  font-size: 20px;
+}
