@@ -23,7 +23,7 @@ class Event < ApplicationRecord
     users_in_range.each do |user|
       long_array.push(user.longitude) if user.longitude
       lat_array.push(user.latitude) if user.latitude
-      user.included = true
+      user.included_in_epicenter = true
       user.save
     end
     event_longitude = long_array.sum / long_array.count

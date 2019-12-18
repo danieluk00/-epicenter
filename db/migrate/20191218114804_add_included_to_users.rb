@@ -1,5 +1,5 @@
 class AddIncludedToUsers < ActiveRecord::Migration[5.2]
   def change
-    rename_column :users, :included, :included_in_epicenter
+    add_column :users, :included, :boolean
   end
 end
