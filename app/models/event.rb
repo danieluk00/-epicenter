@@ -54,8 +54,6 @@ class Event < ApplicationRecord
     self.venue_rating =  final_place.rating
     self.save!
 
-raise
-
     return { lat: latitude, lng: longitude }
   end
 
