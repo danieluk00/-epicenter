@@ -1,15 +1,15 @@
 .form-new {
 
-input, label, textarea {
-  width: 100%;
-  padding: 4px 4px;
-  font-family: nunito;
-  font-size: 18px;
-  margin: 15px, 0, 0, 0;
-}
+  input, label, textarea {
+    // width: 100%;
+    // padding: 4px 4px;
+    font-family: nunito;
+    font-size: 18px;
+    margin-bottom: 15px !important;
+  }
 
-label {
-  font-weight: bold;
-}
+  label {
+    font-weight: bold;
+  }
 
 }

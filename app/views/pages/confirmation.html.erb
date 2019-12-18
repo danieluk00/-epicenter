@@ -1,40 +1,39 @@
 <div class="home-container">
-    <h1 class="title-h1">Announcing our location</h1>
+  <h1 class="title-h1">Announcing our location</h1>
 </div>
-<div id="map"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div id="map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-<% if @event.venue_name %>
+<div class="confirmation-wrapper">
+  <% if @event.venue_name %>
   <h2 class="title-h2 confirmation-h2__styling"><%= @event.venue_name %></h2>
-<% else %>
+  <% else %>
   <h2 class="title-h2">Sorry, we couldn´t find any venues</h2>
-<% end %>
-
-<% if @event.venue_rating %>
+  <% end %>
+  
+  <% if @event.venue_rating %>
   <% rating = @event.venue_rating.to_i %>
   <div class="rating-wrapper">
-    <p class="confirmation-rating"><%= "#{ @event.venue_rating }" %></p>
-  <% rating.times do %>
-    <span class="confirmation-stars">👌</span> 
+      <p class="confirmation-rating"><%= "#{ @event.venue_rating }" %></p>
+      <% rating.times do %>
+      <span class="confirmation-stars">👌</span>
+      <% end %>
+    </div>
+    <% if @event.venue_address %>
+      <p><%= @event.venue_address %></h2>
+    <% end %>
   <% end %>
-  </div>
-<% end %>
+</div>
 
 <% if @event.venue_photo_url? %>
-   <%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
+<%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
 <% end %>
 
-<% if @event.venue_address %>
-  <p><%= @event.venue_address %></h2>
-<% end %>
+<%= image_tag ("walking.svg"), class: "confirmation-image" %>
 
-<% if @event.venue_phone %>
-  <p><%= @event.venue_phone %></h2>
-<% end %>
-
-<% if @event.venue_map_link %>
-  <%= @event.venue_map_link %>
-<% end %>
-
+<div class="button-wrapper">
+  <% if @event.venue_map_link %>
+  <% @event.venue_map_link %>
+  <% link = "https://www.google.com/maps/search/?api=1&query=#{@event.latitude},#{@event.longitude}&query_place_id=#{@event.venue_map_link}" %>
+  <button class="btn main-button confirmation-button"><%=  link_to "Get directions", link %></button>
+  <% end %>
+</div>

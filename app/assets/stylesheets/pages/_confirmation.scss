@@ -1,6 +1,8 @@
 #map {
-  width: 100%;
-  height: 200px;
+  overflow: visible;
+  height: 250px;
+  position: sticky;
+  top: 60px;
 }
 
 .confirmation-h2__styling {
@@ -10,11 +12,17 @@
 
 .confirmation-image {
   width: 100%;
+  margin: 20px 0;
+}
+
+.confirmation-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .rating-wrapper {
   display: flex;
-  align-items: baseline;
   font-family: "Nunito";
 }
 
@@ -25,4 +33,17 @@
 
 .confirmation-stars {
   font-size: 20px;
+}
+
+.confirmation-button {
+  margin-top: 20px;
+}
+
+.confirmation-button a{
+  color: white;
+}
+
+.button-wrapper {
+  position: relative;
+  bottom: 0;
 }

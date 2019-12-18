@@ -7,7 +7,7 @@ if (joinWrapper) {
   let id = joinWrapper.getAttribute('data-id');
   let notWorkingDate = new Date(joinWrapper.getAttribute('data-time')).getTime();
   const time_left = joinWrapper.getAttribute('data-deadline');
- 
+
 // *****************
 let dateArray = joinWrapper.getAttribute('data-time').split(' ');
 let dateRebuild = `${dateArray[0]}T${dateArray[1]}`;
@@ -56,7 +56,7 @@ dt = notWorkingDate ? notWorkingDate : dateIos;
 
         if (t.total==0) {
           console.log('redirect')
-          window.location.replace("/confirmation?event="+id);
+          window.location.replace("/optimising?event="+id);
         } else if (t.days>0) {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.days}</span>d <span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m</span>`;
         } else {
