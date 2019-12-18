@@ -13,6 +13,7 @@ require 'securerandom'
     @user.event = @event
     @user.token = SecureRandom.hex(10)
     @user.organiser = true
+    @user.included = true
     if @user.save && @event.save
       create_background_job
       set_cookie
