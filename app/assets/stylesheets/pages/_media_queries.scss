@@ -1,0 +1,46 @@
+.form-new{
+    width: 100%;
+  }
+
+@media screen and (min-width: 992px) {
+  .form-new{
+    width: 600px;
+    margin: 0px auto;
+  }
+  .bottom-form{
+    width: 600px;
+    margin: 0px auto;
+  }
+  .main-button{
+    width: 600px;
+    margin: 0px auto;
+  }
+  .home-container{
+    width: 600px;
+    margin: 0px auto;
+  }
+  .home-carousel__image{
+    height: 170px;
+    width: auto;
+    margin: 3vh;
+  }
+  .carousel-item{
+    margin-top: 24px;
+  }
+  .footer {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .main-container{
+    padding: 14vh 0vw 0 0vw;
+  }
+  .title-h1{
+    font-size: 80px;
+    margin-top: -18px;
+  }
+  p{
+    font-size: 40px !important;
+  }
+
+ }
