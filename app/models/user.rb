@@ -5,5 +5,5 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, format: { with: /\A.*@.*\.com\z/ }
-  validates :address, presence: true
+  # validates :address, presence: true
 end
