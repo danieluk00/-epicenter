@@ -9,7 +9,7 @@
          label_method: :second, label: 'Where do you want to meet?', checked: ['0', 'Bar'] %>
       </div>
 
-   <%= f.input :start_dt, required: true, input_html: {class: "datepicker form-control"},
+   <%= f.input :start_dt, as: :string, required: true, input_html: {class: "datepicker form-control"},
     label: 'When does the event start?' %>
     <!-- <input type="date" name="start_dt" class="datepicker form-control"> -->
     <%= f.input :registration_deadline, collection: ["3 minutes", "1 hour",
