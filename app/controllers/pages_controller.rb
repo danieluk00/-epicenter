@@ -23,4 +23,8 @@ class PagesController < ApplicationController
     # we want to show all the confirmed users for this event
     @users = User.where(event: @event)
   end
+
+  def optimising
+    @event = Event.find_by(event_token: params[:event])
+  end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'howitworks', to: 'pages#howitworks'
   get 'confirmation', to: 'pages#confirmation', as: :confirmation
   get '/waiting', to: 'pages#waiting'
+  get '/optimising', to: 'pages#optimising'
   get 'events/:event_token', to: 'events#join'
   get 'events/:event_token/users/new', to: 'users#new', as: 'new_user'
   post 'events/:event_token/users/create', to: 'users#create', as: 'create_user'

@@ -36,7 +36,7 @@ require 'securerandom'
     @event = Event.find_by(event_token: params[:event_token])
     @event.registration_deadline = 'none'
     @event.save
-    redirect_to confirmation_path(@event) + "?event=#{@event.event_token}"
+    redirect_to optimising_path(@event) + "?event=#{@event.event_token}"
   end
 
   def share

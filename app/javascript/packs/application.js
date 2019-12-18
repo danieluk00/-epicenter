@@ -21,4 +21,6 @@ autocompleteAddress();
 
 import "../plugins/flatpickr"
 
+import { optimisingAnimation } from "./optimising";
 
+optimisingAnimation();
