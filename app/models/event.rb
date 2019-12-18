@@ -45,13 +45,14 @@ class Event < ApplicationRecord
     final_place = places.sort_by { |place| place.rating }.reverse.first(1)[0]
 
     # saving all the information of the final_place
-    self.latitude = final_place.lat
-    self.longitude = final_place.lng
+    latitude = final_place.lat
+    longitude = final_place.lng
     self.venue_name = final_place.name
     self.venue_address = final_place.formatted_address
     self.venue_phone = final_place.formatted_phone_number
     self.venue_photo_url = final_place.photos[0].fetch_url(800)
     self.venue_rating =  final_place.rating
+    self.venue_map_link = final_place.photos[0].html_attributions[0]
     self.save!
 
     return { lat: latitude, lng: longitude }

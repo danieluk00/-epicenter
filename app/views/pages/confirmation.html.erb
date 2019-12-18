@@ -28,5 +28,6 @@
   <p><%= @event.venue_phone %></h2>
 <% end %>
 
-
-end
+<% if @event.venue_map_link %>
+  <%= @event.venue_map_link %>
+<% end %>
