@@ -13,11 +13,11 @@ class Event < ApplicationRecord
   def calc_epicentre
     if users.length == 1 # there are no invitees
       return false
-    else
-      if latitude && longitude
+    elsif latitude && longitude
         return { lat: latitude, lng: longitude }
-      end
-      return self if has_venue?
+    end
+      
+    return self if has_venue?
 
       # 1st calculating epicenter
       long_array = []
@@ -25,6 +25,7 @@ class Event < ApplicationRecord
 
       organiser_location = [users.first.latitude, users.first.longitude]
       users_in_range = self.users.near(organiser_location, 40)
+
       if users_in_range.length == 1 # the aren't invitees close
         return false
       else
@@ -34,7 +35,8 @@ class Event < ApplicationRecord
           lat_array.push(user.latitude) if user.latitude
           user.included_in_epicenter = true
           user.save
-        end
+      end
+
         event_longitude = long_array.sum / long_array.count
         event_latitude = lat_array.sum / lat_array.count
 
@@ -43,6 +45,7 @@ class Event < ApplicationRecord
         # We take the 5 first places in a radio from 100 meters to 2000 meters
         radius=100
         places = []
+
         while places.length<=5 && radius<2000 do
           places = @client.spots(event_latitude, event_longitude, :radius => radius, :types => [venue_type.downcase])
           radius = radius * 2
@@ -64,17 +67,12 @@ class Event < ApplicationRecord
         return { lat: latitude, lng: longitude }
       end
     end
+    def epicentre
+      return @epicentre if @epicentre
+      @epicentre = calc_epicentre
+    end
   end
 
 
-  def epicentre
-    return @epicentre if @epicentre
-    @epicentre = calc_epicentre
-  end
 
-  def epicentre
-    return @epicentre if @epicentre
-    @epicentre = calc_epicentre
-  end
-end
 
