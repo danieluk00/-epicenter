@@ -1,6 +1,6 @@
 <div class="home-container">
-  <h1 class="title-h1"><%= @event.event_name %></h1>
-   <p class="form-label">Copy this link to share your event</p>
+  <h1 class="title-h1" id="name-id"><%= @event.event_name %></h1>
+   <p class="form-label" id="copy-link">Copy this link to share your event</p>
 </div>
 
 <div class="share-code">
@@ -15,7 +15,7 @@
   <button class="main-button">Copy link</button>
 </div>
 
-<div style="text-align: center; margin-top: -10px; margin-bottom: 10px">
+<div class="waitng-page-text" style="text-align: center; margin-top: -10px; margin-bottom: 10px">
   <%= link_to "Go to the waiting page", "/waiting" + "?event=#{@event.event_token}" %>
 </div>
 

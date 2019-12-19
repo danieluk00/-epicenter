@@ -3,6 +3,8 @@
   }
 
 @media screen and (min-width: 992px) {
+
+//HOME PAGE
   .form-new{
     width: 600px;
     margin: 0px auto;
@@ -41,6 +43,60 @@
   }
   p{
     font-size: 30px !important;
+
+//SHARE EVENT PAGE
   }
+  #name-id{
+    text-align: center;
+  }
+  #copy-link{
+    text-align: center;
+  }
+  .image-container{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+  }
+
+  .waitng-page-text{
+    font-size: 20px;
+  }
+  .main-button-container{
+    margin-bottom: 34px;
+  }
+  //CONFIRMATION PAGE
+  .confirmation-image{
+    width: 400px;
+  }
+  button{
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  }
