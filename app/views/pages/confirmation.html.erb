@@ -9,7 +9,7 @@
   <% else %>
   <h2 class="title-h2">Sorry, we couldn´t find any venues</h2>
   <% end %>
-  
+
   <% if @event.venue_rating %>
   <% rating = @event.venue_rating.to_i %>
   <div class="rating-wrapper">
@@ -28,7 +28,7 @@
 <%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
 <% end %>
 
-<%= image_tag ("walking.svg"), class: "confirmation-image" %>
+<%= image_tag ("walking.png"), class: "confirmation-image" %>
 
 <div class="button-wrapper">
   <% if @event.venue_map_link %>
