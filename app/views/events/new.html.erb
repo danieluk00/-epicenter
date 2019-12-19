@@ -1,10 +1,10 @@
 <div class="form-new">
   <h1 class="title-h1">Create your event</h1>
 
-  <%= simple_form_for @event do |f| %>
+  <%= simple_form_for @event, html: { autocomplete: 'off' } do |f| %>
     <%= f.input :event_name, label: 'Give your event a name' %>
 
-    <%= f.input :venue_type, as: :radio_buttons, item_wrapper_class: 'form-radio',  collection: [['0', 'Bar'],['1', 'Cafe']],
+    <%= f.input :venue_type, as: :radio_buttons, item_wrapper_class: 'form-radio',  collection: [['0', 'Bar'],['1', 'Cafe'], ['2', 'Restaurant']],
      label_method: :second, label: 'Where do you want to meet?', checked: ['0', 'Bar'] %>
 
    <%= f.input :start_dt, as: :string, required: true, input_html: {class: "datepicker form-control"},
@@ -14,7 +14,7 @@
         "4 hours", "12 hours", "1 day", "3 days", "5 days" ],
         label: 'Choose how long guests have to join', selected: ["1 hour"] %>
     <div class="bottom-form">
-      <%= f.simple_fields_for @user , html: { autocomplete: 'off' } do |u| %>
+      <%= f.simple_fields_for @user, html: { autocomplete: 'off' } , html: { autocomplete: 'off' } do |u| %>
         <%= u.input :address, label: "Where are you travelling from?"%>
         <%= u.input :name, label: "What's your name?"%>
         <%= u.input :email, label: "What's your email address?"%>

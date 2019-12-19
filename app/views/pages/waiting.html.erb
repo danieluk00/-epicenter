@@ -15,11 +15,9 @@
     <%= render 'shared/users' %>
 
   <% if cookies["event+#{@event.event_token}"] == 'true' %>
-    <%= form_tag endwaiting_path(@event.event_token), method: :post do %>
-    <!-- <%= form_tag endwaiting_path(@event.event_token), method: :post, data: {confirm: "Are you sure?"} do %> -->
+    <%= form_tag endwaiting_path(@event.event_token), method: :post, data: {confirm: "Are you sure you want to end the countdown?"} do %>
       <button class="main-button">End countdown now!</button>
     <% end %>
   <% end %>
-<% end %>
 
 </div>

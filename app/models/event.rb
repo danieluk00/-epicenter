@@ -6,6 +6,9 @@ class Event < ApplicationRecord
   validates :start_dt, presence: true
   validates :registration_deadline, presence: true
 
+  def has_venue?
+    self.venue_name && self.venue_address && self.venue_rating && self.venue_map_link
+  end
 
   def calc_epicentre
     if users.length == 1 # there are no invitees
@@ -13,8 +16,9 @@ class Event < ApplicationRecord
     else
       if latitude && longitude
         set_instance_variables
-        return {lat: latitude, lng: longitude}
+        return { lat: latitude, lng: longitude }
       end
+      return self if has_venue?
 
       # 1st calculating epicenter
       long_array = []
@@ -38,7 +42,6 @@ class Event < ApplicationRecord
 
         # We create a client of the GPLACES API
         @client = GooglePlaces::Client.new(ENV["GPLACES_API_KEY"])
-
         # We take the 5 first places in a radio from 100 meters to 2000 meters
         radius=100
         places = []
@@ -54,8 +57,8 @@ class Event < ApplicationRecord
         final_place = places.sample
 
         # We save all the information of the final_place
-        latitude = final_place.lat
-        longitude = final_place.lng
+        self.latitude = final_place.lat
+        self.longitude = final_place.lng
         self.venue_name = final_place.name
         self.venue_address = final_place.vicinity
         self.venue_phone = final_place.formatted_phone_number
@@ -67,6 +70,15 @@ class Event < ApplicationRecord
       end
     end
   end
+
+
+  def epicentre
+    return @epicentre if @epicentre
+    @epicentre = calc_epicentre
+  end
+end
+
+
 
 
   def epicentre
