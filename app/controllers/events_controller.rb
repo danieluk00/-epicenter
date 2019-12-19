@@ -49,10 +49,9 @@ require 'securerandom'
     @users = User.where(event: @event)
     @deadline
 
-    # if cookies["event+#{@event.event_token}"]
-    #   raise
-    #   redirect_to waiting_path + "?event=#{@event.event_token}"
-    # end
+    if cookies["event+#{@event.event_token}"] == 'true'
+      redirect_to waiting_path + "?event=#{@event.event_token}"
+    end
   end
 
   private

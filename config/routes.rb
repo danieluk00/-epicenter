@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get '/waiting', to: 'pages#waiting'
   get '/optimising', to: 'pages#optimising'
   get 'events/:event_token', to: 'events#join'
+  get '/cancelation', to: "pages#cancelation"
   get 'events/:event_token/users/new', to: 'users#new', as: 'new_user'
   post 'events/:event_token/users/create', to: 'users#create', as: 'create_user'
   post 'events/:event_token/', to: 'events#endwaiting', as: 'endwaiting'
+  post 'events/:event_token/', to: 'events#skipoptimising', as: 'skipoptimising'
 
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
