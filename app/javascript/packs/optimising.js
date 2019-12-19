@@ -2,9 +2,9 @@ const optimisingAnimation = () => {
 
   const opt = document.querySelector('.optimising');
 
-  let id = opt.getAttribute('data-id');
-
   if (opt) {
+
+    let id = opt.getAttribute('data-id');
 
     animateTitle('title');
 
