@@ -23,13 +23,12 @@
     <% end %>
   <% end %>
 </div>
-
-<% if @event.venue_photo_url.present? %>
-<%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
-<% end %>
-
-<%= image_tag ("walk.png"), class: "confirmation-image smaller" %>
-
+<div class="confirmation-photo_wrapper">
+  <% if @event.venue_photo_url? %>
+  <%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
+  <% end %>
+  <%= image_tag ("walk.png"), class: "confirmation-image" %>
+</div>
 
 <div class="button-wrapper">
   <% if @event.venue_map_link %>

@@ -2,7 +2,9 @@
     width: 100%;
   }
 
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
+
+//HOME PAGE
   .form-new{
     width: 600px;
     margin: 0px auto;
@@ -14,6 +16,7 @@
   .main-button{
     width: 600px;
     margin: 0px auto;
+    margin-bottom: -30px;
   }
   .home-container{
     width: 600px;
@@ -39,8 +42,70 @@
     font-size: 80px;
     margin-top: -18px;
   }
-  p{
+  #token {
+    font-size: 20px !important;
+  }
+  p {
     font-size: 30px !important;
+
+//SHARE EVENT PAGE
+  }
+  #name-id{
+    text-align: center;
+  }
+  #copy-link{
+    text-align: center;
+  }
+  .image-container{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+  }
+
+  .waitng-page-text{
+    font-size: 20px;
+  }
+  .main-button-container{
+    margin-bottom: 34px;
+  }
+  //CONFIRMATION PAGE
+  .confirmation-image{
+    position: relative;
+    width: 18%;
+  }
+
+  .confirmation-photo_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .button-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  #map{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+//CONFIRMATION
+  #optimising-image{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
   }
 
  }
+
+
+
+
+
+
+
+
+
