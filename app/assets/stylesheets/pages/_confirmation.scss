@@ -13,6 +13,11 @@
 .confirmation-image {
   width: 100%;
   margin: 20px 0;
+  object-fit: contain;
+}
+
+.smaller {
+  position: relative;
 }
 
 .confirmation-wrapper {

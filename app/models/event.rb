@@ -6,8 +6,13 @@ class Event < ApplicationRecord
   validates :start_dt, presence: true
   validates :registration_deadline, presence: true
 
+  def has_venue? 
+    self.venue_name && self.venue_address && self.venue_rating && self.venue_map_link
+  end
 
   def calc_epicentre
+    return self if has_venue?
+
     if latitude && longitude
       set_instance_variables
       return {lat: latitude, lng: longitude}
@@ -33,18 +38,19 @@ class Event < ApplicationRecord
     radius=100
     places = []
     @client = GooglePlaces::Client.new(ENV["GPLACES_API_KEY"])
-    while places.length<=5 && radius<2000 do
+    while places.length <= 5 && radius < 2000 do
       places = @client.spots(event_latitude, event_longitude, :radius => radius, :types => [venue_type.downcase])
       radius = radius * 2
     end
     
     # most_ratings = places.sort_by { |place| place.user_ratings_total }.reverse
-    final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(1)[0]
+    final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(10).sample
 
     # raise
     
 
     # saving all the information of the final_place
+    
     latitude = final_place.lat
     longitude = final_place.lng
     self.venue_name = final_place.name
@@ -54,6 +60,7 @@ class Event < ApplicationRecord
     self.venue_rating =  final_place.rating
     self.venue_map_link = final_place.place_id
     self.save
+  
 
     return { lat: latitude, lng: longitude }
   end
