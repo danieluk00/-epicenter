@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'events/:event_token/users/new', to: 'users#new', as: 'new_user'
   post 'events/:event_token/users/create', to: 'users#create', as: 'create_user'
   post 'events/:event_token/', to: 'events#endwaiting', as: 'endwaiting'
+  post 'events/:event_token/', to: 'events#skipoptimising', as: 'skipoptimising'
 
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
