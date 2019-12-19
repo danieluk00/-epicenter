@@ -1,8 +1,6 @@
 #map {
-  overflow: visible;
   height: 250px;
-  position: sticky;
-  top: 60px;
+  z-index: -1;
 }
 
 .confirmation-h2__styling {
