@@ -5,15 +5,18 @@ class PagesController < ApplicationController
   def confirmation
     @event = Event.find_by(event_token: params[:event])
     @epicentre = @event.epicentre
-
-    @markers = @event.users.geocoded.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
-      }
+    if @epicentre
+      @markers = @event.users.geocoded.map do |user|
+        {
+          lat: user.latitude,
+          lng: user.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+        }
+      end
+      @markers.push(@epicentre)
+    else
+      redirect_to cancelation_path + "?event=#{@event.event_token}"
     end
-    @markers.push(@epicentre)
   end
 
   def waiting
@@ -27,4 +30,9 @@ class PagesController < ApplicationController
   def optimising
     @event = Event.find_by(event_token: params[:event])
   end
+
+  def cancelation
+    @event = Event.find_by(event_token: params[:event])
+  end
+
 end
