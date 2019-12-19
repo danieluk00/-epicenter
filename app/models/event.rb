@@ -15,7 +15,6 @@ class Event < ApplicationRecord
       return false
     else
       if latitude && longitude
-        set_instance_variables
         return { lat: latitude, lng: longitude }
       end
       return self if has_venue?
@@ -26,8 +25,7 @@ class Event < ApplicationRecord
 
       organiser_location = [users.first.latitude, users.first.longitude]
       users_in_range = self.users.near(organiser_location, 40)
-
-      if users_in_range == 1 # the aren't invitees close
+      if users_in_range.length == 1 # the aren't invitees close
         return false
       else
         # We put inside the arrays the longitudes and latitudes
@@ -51,10 +49,7 @@ class Event < ApplicationRecord
         end
 
         # If we want to show always the best rated place uncomment next line
-        # final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(1)[0]
-
-        # We make a random of the 5 final places with the best ratings
-        final_place = places.sample
+        final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(10).sample
 
         # We save all the information of the final_place
         self.latitude = final_place.lat
@@ -62,7 +57,7 @@ class Event < ApplicationRecord
         self.venue_name = final_place.name
         self.venue_address = final_place.vicinity
         self.venue_phone = final_place.formatted_phone_number
-        self.venue_photo_url = final_place.photos[0].fetch_url(800)
+        self.venue_photo_url = final_place.photos[0].fetch_url(800) if final_place.photos[0]
         self.venue_rating =  final_place.rating
         self.venue_map_link = final_place.place_id
         self.save
@@ -76,10 +71,6 @@ class Event < ApplicationRecord
     return @epicentre if @epicentre
     @epicentre = calc_epicentre
   end
-end
-
-
-
 
   def epicentre
     return @epicentre if @epicentre
