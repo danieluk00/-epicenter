@@ -14,6 +14,7 @@ require 'securerandom'
     @user.token = SecureRandom.hex(10)
     @user.organiser = true
     @user.included_in_epicenter = true
+    binding.pry
     if @user.save && @event.save
       create_background_job
       set_cookie
