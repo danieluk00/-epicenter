@@ -16,7 +16,7 @@ class Event < ApplicationRecord
     elsif latitude && longitude
         return { lat: latitude, lng: longitude }
     end
-      
+
     return self if has_venue?
 
       # 1st calculating epicenter
@@ -52,7 +52,7 @@ class Event < ApplicationRecord
         end
 
         # If we want to show always the best rated place uncomment next line
-        final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(10).sample
+        final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(5).sample
 
         # We save all the information of the final_place
         self.latitude = final_place.lat
