@@ -15,7 +15,7 @@ class PagesController < ApplicationController
       end
       @markers.push(@epicentre)
     else
-      redirect_to cancelation_path + "?event=#{@event.event_token}"
+     redirect_to cancelation_path + "?event=#{@event.event_token}"
     end
   end
 

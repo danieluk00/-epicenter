@@ -24,7 +24,7 @@ class Event < ApplicationRecord
       lat_array = []
 
       organiser_location = [users.first.latitude, users.first.longitude]
-      users_in_range = self.users.near(organiser_location, 40)
+      users_in_range = self.users.near(organiser_location, 40, units: :km)
 
       if users_in_range.length == 1 # the aren't invitees close
         return false
