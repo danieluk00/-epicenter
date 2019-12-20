@@ -31,8 +31,8 @@ class Event < ApplicationRecord
       else
         # We put inside the arrays the longitudes and latitudes
         users_in_range.each do |user|
-          long_array.push(user.longitude) if user.longitude
-          lat_array.push(user.latitude) if user.latitude
+          long_array.push(user.longitude) if user.longitude.present?
+          lat_array.push(user.latitude) if user.latitude.present?
           user.included_in_epicenter = true
           user.save
       end
