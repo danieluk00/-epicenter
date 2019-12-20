@@ -30,6 +30,20 @@
   <%= image_tag ("walk.png"), class: "confirmation-image" %>
 </div>
 
+<div class="joined-users">
+  <p class="title-h2-centre user-title">Who's coming?</p>
+  <ul class="users">
+    <% @users.each do |user| %>
+      <% if user.organiser == true %>
+        <li class=""><%= user.name %> <i class="fas fa-flag"></i></li>
+      <% else %>
+        <li><%= user.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+
 <div class="button-wrapper">
   <% if @event.venue_map_link %>
   <% @event.venue_map_link %>

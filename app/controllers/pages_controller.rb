@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def confirmation
     @event = Event.find_by(event_token: params[:event])
+    @users = @event.users
     @epicentre = @event.epicentre
     if @epicentre
       @markers = @event.users.geocoded.map do |user|
