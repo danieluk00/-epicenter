@@ -15,12 +15,14 @@
   <div class="rating-wrapper">
       <p class="confirmation-rating"><%= "#{ @event.venue_rating }" %></p>
       <% rating.times do %>
-      <span class="confirmation-stars">👌</span>
+      <span class="confirmation-stars">⭐️</span>
       <% end %>
     </div>
-    <% if @event.venue_address %>
-      <p><%= @event.venue_address %></h2>
-    <% end %>
+    <div class="confirmation-address">
+      <% if @event.venue_address %>
+       <%= image_tag ("favicon_copy"), class: "small-icon" %> <p><%= @event.venue_address %></p>
+      <% end %>
+    </div>
   <% end %>
 </div>
 <div class="confirmation-photo_wrapper">
