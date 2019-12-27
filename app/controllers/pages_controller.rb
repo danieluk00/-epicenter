@@ -8,17 +8,9 @@ class PagesController < ApplicationController
     @epicentre = @event.epicentre
     @markers = []
     if @epicentre
-      # @markers = @event.users.geocoded.map do |user|
-      #   {
-      #     lat: user.latitude,
-      #     lng: user.longitude,
-      #     infoWindow: render_to_string(partial: "info_window", locals: { user: user })
-      #   }
-      # end
-      # @markers.push(@epicentre)
       @markers.push(@epicentre)
     else
-     redirect_to cancelation_path + "?event=#{@event.event_token}"
+      redirect_to cancelation_path + "?event=#{@event.event_token}"
     end
   end
 
@@ -39,6 +31,6 @@ class PagesController < ApplicationController
   end
 
   def skipoptimising
-    redirect_to confirmation_path(@event) + "?event=#{@event.event_token}"
+    #redirect_to confirmation_path(@event) + "?event=#{@event.event_token}"
   end
 end

@@ -4,7 +4,7 @@
   <%= simple_form_for @event, html: { autocomplete: 'off' } do |f| %>
     <%= f.input :event_name, label: 'Give your event a name' %>
 
-    <%= f.input :venue_type, as: :radio_buttons, item_wrapper_class: 'form-radio',  collection: [['0', 'Bar'],['1', 'Cafe'], ['2', 'Restaurant']],
+    <%= f.input :venue_type, as: :radio_buttons, item_wrapper_class: 'form-radio',  collection: [['0', 'Bar'],['1', 'Café'], ['2', 'Restaurant']],
      label_method: :second, label: 'Where do you want to meet?', checked: ['0', 'Bar'] %>
 
    <%= f.input :start_dt, as: :string, required: true, input_html: {class: "datepicker form-control"},
@@ -16,7 +16,6 @@
     <div class="bottom-form">
       <%= f.simple_fields_for @user, html: { autocomplete: 'off' } , html: { autocomplete: 'off' } do |u| %>
         <%= u.input :name, label: "What's your name?"%>
-        <%= u.input :email, label: "What's your email address?"%>
         <%= u.input :address, label: "Where are you travelling from?"%>
       <% end  %>
     </div>
