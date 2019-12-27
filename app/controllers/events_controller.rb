@@ -15,22 +15,13 @@ require 'securerandom'
     @user.organiser = true
     @user.included_in_epicenter = true
     if @user.save && @event.save
-      create_background_job
+      #create_background_job
       set_cookie
       redirect_to share_path + "?event=#{@event.event_token}&user=#{@user.token}"
     else
       render :new
     end
   end
-
-  # def update
-  #   @event = Event.find(params[:id])
-  #   @event.latitude = @event.epicentre[0]
-  #   @event.longitude = @event.epicentre[1]
-  #   @event.update(secure_params_event)
-  #   @event.save
-  #   redirect_to confirmation_path({event_id: @event})
-  # end
 
   def endwaiting
     @event = Event.find_by(event_token: params[:event_token])
@@ -61,7 +52,7 @@ require 'securerandom'
   end
 
   def secure_params_user
-    params_sec = params.require(:event).permit(user: [:name, :address, :email])
+    params_sec = params.require(:event).permit(user: [:name, :address])
     params_sec[:user]
   end
 
@@ -74,7 +65,7 @@ require 'securerandom'
     when 'none'
       delay = 5.seconds
     when '3 minutes'
-      delay = 10.seconds
+      delay = 3.minutes
     when '1 hour'
       delay = 1.hour
     when '4 hours'
@@ -88,6 +79,5 @@ require 'securerandom'
     when '5 days'
       delay = 5.days
     end
-    EnqueueEmailJob.set(wait: delay).perform_later(@event.event_token)
   end
 end

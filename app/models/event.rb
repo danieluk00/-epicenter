@@ -11,10 +11,10 @@ class Event < ApplicationRecord
   end
 
   def calc_epicentre
-    if users.length == 1 # there are no invitees
+    if users.length == 0 # there are no invitees
       return false
     elsif latitude && longitude
-        return { lat: latitude, lng: longitude }
+      return { lat: latitude, lng: longitude }
     end
 
     return self if has_venue?
@@ -26,13 +26,13 @@ class Event < ApplicationRecord
       organiser_location = [users.first.latitude, users.first.longitude]
       users_in_range = self.users.near(organiser_location, 40, units: :km)
 
-      if users_in_range.length == 1 # the aren't invitees close
+      if users_in_range.length == 0 # the aren't invitees close
         return false
       else
         # We put inside the arrays the longitudes and latitudes
         users_in_range.each do |user|
-          long_array.push(user.longitude) if user.longitude.present?
-          lat_array.push(user.latitude) if user.latitude.present?
+          long_array.push(user.longitude) if user.longitude.present? && !user.longitude.nil?
+          lat_array.push(user.latitude) if user.latitude.present? && !user.latitude.nil?
           user.included_in_epicenter = true
           user.save
       end

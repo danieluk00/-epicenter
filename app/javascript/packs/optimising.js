@@ -11,19 +11,19 @@ const optimisingAnimation = () => {
     setTimeout(function(){
       animateTitle('title1');
       document.getElementById('title').classList.add('d-none');
-    }, 3000);
+    }, 2500);
 
     setTimeout(function(){
       animateTitle('title2');
-    }, 6000);
+    }, 5000);
 
     setTimeout(function(){
       animateTitle('title3');
-    }, 9000);
+    }, 7500);
 
     setTimeout(function(){
         window.location.replace("/confirmation?event="+id);
-    }, 9000);
+    }, 10000);
 
   }
 }
@@ -36,16 +36,16 @@ const animateTitle = (element) => {
     elementName.classList.remove('d-none');
   }
 
-  elementName.classList.add('animated','bounceInDown');
+  elementName.classList.add('animated','fadeIn');
   setTimeout(function(){
-    elementName.classList.remove('animated','bounceInDown');
-    elementName.classList.add('animated','bounceOutDown');
+    elementName.classList.remove('animated','fadeIn');
+    elementName.classList.add('animated','fadeIn');
 
     setTimeout(function(){
         elementName.classList.add('d-none');
     }, 500);
 
-  }, 2500);
+  }, 2000);
 
 
 }
