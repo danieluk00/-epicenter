@@ -11,19 +11,19 @@ const optimisingAnimation = () => {
     setTimeout(function(){
       animateTitle('title1');
       document.getElementById('title').classList.add('d-none');
-    }, 2500);
+    }, 2000);
 
     setTimeout(function(){
       animateTitle('title2');
-    }, 5000);
+    }, 4000);
 
     setTimeout(function(){
       animateTitle('title3');
-    }, 7500);
+    }, 6000);
 
     setTimeout(function(){
         window.location.replace("/confirmation?event="+id);
-    }, 10000);
+    }, 9000);
 
   }
 }
@@ -45,7 +45,7 @@ const animateTitle = (element) => {
         elementName.classList.add('d-none');
     }, 500);
 
-  }, 2000);
+  }, 1500);
 
 
 }

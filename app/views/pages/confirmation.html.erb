@@ -1,6 +1,5 @@
 <div class="home-container">
   <h1 class="title-h1">Announcing our location</h1>
-</div>
 <div id="map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 <div class="confirmation-wrapper">
@@ -20,7 +19,7 @@
     </div>
     <div class="confirmation-address">
       <% if @event.venue_address %>
-       <%= image_tag ("favicon_copy.png"), class: "small-icon" %> <p><%= @event.venue_address %></p>
+       <%= image_tag ("icon.png"), class: "small-icon" %> <p><%= @event.venue_address %></p>
       <% end %>
     </div>
   <% end %>
@@ -29,7 +28,7 @@
   <% if @event.venue_photo_url? %>
   <%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
   <% end %>
-  <%= image_tag ("walk.png"), class: "confirmation-image" %>
+  <%= image_tag ("walk.png"), class: "confirmation-image walking-image" %>
 </div>
 
 <div class="joined-users">
@@ -45,11 +44,12 @@
   </ul>
 </div>
 
-
 <div class="button-wrapper">
   <% if @event.venue_map_link %>
   <% @event.venue_map_link %>
   <% link = "https://www.google.com/maps/search/?api=1&query=#{@event.latitude},#{@event.longitude}&query_place_id=#{@event.venue_map_link}" %>
   <button class="btn main-button confirmation-button"><%=  link_to "Get directions", link %></button>
   <% end %>
+</div>
+
 </div>

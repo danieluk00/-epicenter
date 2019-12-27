@@ -1,9 +1,8 @@
 <div class="join-wrapper joinpage" data-time="<%=@event.created_at%>" data-deadline="<%=@event.registration_deadline%>" data-id="<%=@event.event_token%>">
 
-    <div class="home-container">
+  <div class="home-container">
       <h1 class="title-h1" ><%= @event.event_name %></h1>
       <h2 class="title-h2" style="text-align: center"><span class="animated rubberBand"><strong><%= @organiser.name %></strong></span> has invited you to meet on <span class="animated tada"><strong><%=@event.start_dt.strftime("%A %e %b at %l:%M%P") %></strong></span>.</h2>
-    </div>
 
     <div class="image-container">
      <%= image_tag('having_fun.png') %>
@@ -28,5 +27,7 @@
         <% end %>
       <% end %>
     </div>
+
+  </div>
 
 </div>
