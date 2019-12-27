@@ -22,7 +22,7 @@
     width: 600px;
     margin: 0px auto;
   }
-  .home-carousel__image{
+  .home-carousel-image{
     height: 180px;
     width: auto;
     margin: 2vh;
@@ -63,8 +63,9 @@
     margin-top: 50px;
   }
 
-  .waitng-page-text{
+  .waiting-page-text{
     font-size: 20px;
+    padding-top: 20px;
   }
   .main-button-container{
     margin-bottom: 34px;
@@ -72,7 +73,7 @@
   //CONFIRMATION PAGE
   .confirmation-image{
     position: relative;
-    width: 18%;
+    width: 600px;
   }
 
   .confirmation-photo_wrapper {
@@ -87,7 +88,7 @@
     margin-bottom: 40px;
   }
   #map{
-    width: 500px;
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -97,6 +98,10 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+  }
+
+  .walking-image {
+    display:none;
   }
 
  }
