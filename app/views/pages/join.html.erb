@@ -23,10 +23,8 @@ xi<div class="join-wrapper" data-time="<%=@event.created_at%>" data-deadline="<%
   <div id="clockdiv"></div>
   <h2 class="title-h2-centre">Time left to join</h2>
   <div class="main-button-container">
-    <% if @organiser %>
-      <%= link_to(new_user_path) do %>
-        <button class="main-button">I'm in!</button>
-      <% end %>
+    <%= link_to(new_user_path) do %>
+      <button class="main-button">I'm in!</button>
     <% end %>
   </div>
 </div>
