@@ -2,16 +2,17 @@
 
   <div class="home-container">
       <h1 class="title-h1" ><%= @event.event_name %></h1>
-      <h2 class="title-h2" style="text-align: center"><span class="animated rubberBand"><strong><%= @organiser.name %></strong></span> has invited you to meet on <span class="animated tada"><strong><%=@event.start_dt.strftime("%A %e %b at %l:%M%P") %></strong></span>.</h2>
+      <h2 class="title-h2" style="text-align: center"><strong><%= @organiser.name %></strong> has invited you to meet on <strong><%=@event.start_dt.strftime("%A %e %b at %l:%M%P") %></strong>.</h2>
 
     <div class="image-container">
      <%= image_tag('having_fun.png') %>
     </div>
 
     <%= render 'shared/users' %>
-
-    <p class="join-padding">Once everyone’s joined, we’ll calculate the central point and recommend a nearby venue that’s good for everyone.</p>
-
+    <div class="join-padding">
+      <h2 class="title-h2" style="text-align: center"><strong>Venue TBD</strong></h2>
+      <p>Once everyone’s joined, Epicenter will calculate the central point from everyone attending and will recommend a nearby venue that’s good for everyone.</p>
+    </div>
     <div class="image-container" class="join-padding">
      <%= image_tag('dark_map.png') %>
     </div>

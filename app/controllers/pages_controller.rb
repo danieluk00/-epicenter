@@ -30,7 +30,4 @@ class PagesController < ApplicationController
     @event = Event.find_by(event_token: params[:event])
   end
 
-  def skipoptimising
-    redirect_to confirmation_path(@event) + "?event=#{@event.event_token}"
-  end
 end
