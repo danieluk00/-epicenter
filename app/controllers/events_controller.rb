@@ -35,7 +35,7 @@ require 'securerandom'
   end
 
   def join
-    # When a user
+    # When a user joins an event
     @event = Event.find_by(event_token: params[:event_token])
     @organiser = User.find_by(event: @event, organiser: true)
     @users = User.where(event: @event)

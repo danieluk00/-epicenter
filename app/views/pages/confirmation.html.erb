@@ -1,56 +1,55 @@
 <div class="home-container">
   <h1 class="title-h1">Announcing our location</h1>
-<div id="map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div id="map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
 <div class="confirmation-wrapper">
   <% if @event.venue_name %>
-  <h2 class="title-h2 confirmation-h2__styling"><%= @event.venue_name %></h2>
+    <h2 class="title-1-centre confirmation-h2__styling"><%= @event.venue_name %></h2>
   <% else %>
-  <h2 class="title-h2">Sorry, we couldn´t find any venues</h2>
+    <h2 class="title-h1-centre">Sorry, we couldn´t find any venues</h2>
   <% end %>
 
   <% if @event.venue_rating %>
-  <% rating = @event.venue_rating.to_i %>
-  <div class="rating-wrapper">
-      <p class="confirmation-rating"><%= "#{ @event.venue_rating }" %></p>
-      <% rating.times do %>
-      <span class="confirmation-stars">⭐️</span>
-      <% end %>
-    </div>
-    <div class="confirmation-address">
-      <% if @event.venue_address %>
-       <%= image_tag ("icon.png"), class: "small-icon" %> <p><%= @event.venue_address %></p>
-      <% end %>
-    </div>
+    <% rating = @event.venue_rating.to_i %>
+    <div class="rating-wrapper">
+        <% rating.times do %>
+        <span class="confirmation-stars">⭐️</span>
+        <% end %>
+      </div>
+      <div class="confirmation-address">
+        <% if @event.venue_address %>
+         <%= image_tag ("icon.png"), class: "small-icon" %> <p><%= @event.venue_address %></p>
+        <% end %>
+      </div>
   <% end %>
-</div>
-<div class="confirmation-photo_wrapper">
-  <% if @event.venue_photo_url? %>
-  <%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
-  <% end %>
-  <%= image_tag ("walk.png"), class: "confirmation-image walking-image" %>
-</div>
-
-<div class="joined-users">
-  <p class="title-h2-centre user-title">Who's coming?</p>
-  <ul class="users">
-    <% @users.each do |user| %>
-      <% if user.organiser == true %>
-        <li class=""><%= user.name %> <i class="fas fa-flag"></i></li>
-      <% else %>
-        <li><%= user.name %></li>
-      <% end %>
+  </div>
+  <div class="confirmation-photo_wrapper">
+    <% if @event.venue_photo_url? %>
+    <%= image_tag @event.venue_photo_url, class: "confirmation-image" %>
     <% end %>
-  </ul>
-</div>
+    <%= image_tag ("walk.png"), class: "confirmation-image walking-image" %>
+  </div>
 
-<div class="button-wrapper">
-  <% if @event.venue_map_link %>
-  <% @event.venue_map_link %>
-  <% link = "https://www.google.com/maps/search/?api=1&query=#{@event.latitude},#{@event.longitude}&query_place_id=#{@event.venue_map_link}" %>
-  <button class="btn main-button confirmation-button"><%=  link_to "Get directions", link %></button>
-  <% end %>
-</div>
+  <div class="joined-users">
+    <p class="title-h2-centre user-title">Who's coming?</p>
+    <ul class="users">
+      <% @users.each do |user| %>
+        <% if user.organiser == true %>
+          <li class=""><%= user.name %> <i class="fas fa-flag"></i></li>
+        <% else %>
+          <li><%= user.name %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="button-wrapper">
+    <% if @event.venue_map_link %>
+    <% @event.venue_map_link %>
+    <% link = "https://www.google.com/maps/search/?api=1&query=#{@event.latitude},#{@event.longitude}&query_place_id=#{@event.venue_map_link}" %>
+    <button class="btn main-button confirmation-button"><%=  link_to "Get directions", link %></button>
+    <% end %>
+  </div>
 
 </div>
