@@ -3,65 +3,87 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap" rel="stylesheet">
-  <title>Oops, something has gone wrong</title>
+  <title>We can't find that page</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
 
-  .main-container {
-    padding: 14vh 5vw 0 5vw;
-    height: 90vh;
-  }
+      body {
+        background: #F8F8FF;
+      }
 
-  .title-h1 {
-    color: #000000;
-    font-size: 56px;
-    font-family: roboto;
-    font-weight: 900;
-    text-align: left;
-  }
+      .main-container {
+        padding: 14vh 5vw 0 5vw;
+        height: 90vh;
+      }
 
-  p {
-    color: black;
-    font-size: 18px;
-    font-family: nunito;
-    text-align: center;
-  }
+      .home-container {
+        padding: 10px 0 20px 0;
+      }
 
-  img {
-    width: 200px;
-  }
+      .title-h1 {
+        color: #000000;
+        font-size: 56px;
+        font-family: roboto;
+        font-weight: 900;
+        text-align: left;
+      }
 
-  .img-container {
-    display:flex;
-    justify-content: center;
-  }
+      @media (min-width: 992px) {
+        .main-container{
+          padding: 14vh 0vw 0 0vw;
+        }
+        .home-container{
+          width: 600px;
+          margin: 0px auto;
+        }
+        .title-h1{
+          font-size: 80px;
+          margin-top: -18px;
+        }
+      }
 
+      p {
+        color: black;
+        font-size: 18px;
+        font-family: nunito;
+        text-align: center;
+      }
 
-.logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 120px !important;
-}
+      .pic {
+        width: 300px;
+        height: 240px;
+      }
 
+      .img-container {
+        display:flex;
+        justify-content: center;
+      }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 120px !important;
+    }
 
   </style>
 </head>
 
 <body>
 
-  <img class="logo" src="images/logo.png">
+  <a href="/"><img class="logo" src="images/logo.png"></a>
 
   <div class="main-container">
+    <div class="home-container">
 
+      <h1 class="title-h1">Sorry, something went wrong</h1>
+      <div class="img-container">
+        <img class="pic" src="images/cancellation.png">
+      </div>
 
-    <h1 class="title-h1">Oops, something has gone wrong</h1>
-    <div class="img-container">
-      <img src="images/location.png">
+      <p><a href="/">Click here</a> to return to the homepage.</p>
+
     </div>
-
-    <p><a href="/">Click here</a> to return to the homepage.</p>
-
   </div>
 
 </body>
