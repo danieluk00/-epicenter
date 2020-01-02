@@ -42,6 +42,7 @@ class Event < ApplicationRecord
         lat_array.push(user.latitude) if user.latitude.present? && !user.latitude.nil?
         user.included_in_epicenter = true
         user.save
+      end
     end
       
     # The epicenter is then the average of the lats and longs
@@ -63,20 +64,21 @@ class Event < ApplicationRecord
     final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(5).sample
 
     # We save all the information of the final_place
-    self.latitude = final_place.lat
-    self.longitude = final_place.lng
-    self.venue_name = final_place.name
-    self.venue_address = final_place.vicinity
-    self.venue_phone = final_place.formatted_phone_number
-    self.venue_photo_url = final_place.photos[0].fetch_url(800) if final_place.photos[0]
-    self.venue_rating =  final_place.rating
-    self.venue_map_link = final_place.place_id
-    self.save
-    return { lat: latitude, lng: longitude }
+    if final_place
+      self.latitude = final_place.lat
+      self.longitude = final_place.lng
+      self.venue_name = final_place.name
+      self.venue_address = final_place.vicinity
+      self.venue_phone = final_place.formatted_phone_number
+      self.venue_photo_url = final_place.photos[0].fetch_url(800) if final_place.photos[0]
+      self.venue_rating =  final_place.rating
+      self.venue_map_link = final_place.place_id
+      self.save
+      return { lat: latitude, lng: longitude }
     end
-    end
-
   end
+
+end
 
 
 
