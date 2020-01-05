@@ -34,6 +34,13 @@ require 'securerandom'
     @event = Event.find_by(event_token: params[:event])
   end
 
+  def refresh_users
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def join
     # When a user joins an event
     @event = Event.find_by(event_token: params[:event_token])
@@ -66,6 +73,17 @@ require 'securerandom'
     @user.token = SecureRandom.hex(10)
     @user.organiser = true
     @user.included_in_epicenter = true
+  end
+
+  def spinagain
+    puts 'Spin again'
+    @event.venue_name = nil
+    @event.venue_address = nil
+    @event.venue_rating = nil
+    @event.venue_map_link = nil
+    @event.latitude = nil
+    @event.longitude = nil
+    @event.save
   end
 
 end

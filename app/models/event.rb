@@ -17,9 +17,11 @@ class Event < ApplicationRecord
   end
 
   def calc_epicentre
+    puts 'Calculating epicenter'
     if users.length == 0 # If there are no invitees, return false
       return false
     elsif latitude && longitude # Otherwise return epicenter lat and long
+      puts 'Epicenter already exists'
       return { lat: latitude, lng: longitude } 
     end
 
@@ -59,6 +61,8 @@ class Event < ApplicationRecord
       places = @client.spots(event_latitude, event_longitude, :radius => radius, :types => [venue_type.downcase])
       radius = radius * 2
     end
+
+    puts places.sort_by { |place| place.rating.to_f }.reverse.first(5)
 
     # We order the places returned by rating and randomly choose one place randomly from the top five.
     final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(5).sample
