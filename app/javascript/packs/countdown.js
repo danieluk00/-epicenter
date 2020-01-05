@@ -55,7 +55,6 @@ dt = notWorkingDate ? notWorkingDate : dateIos;
       var t = getTimeRemaining(endtime);
 
         if (t.total==0) {
-          console.log('redirect')
           window.location.replace("/optimising?event="+id);
         } else if (t.days>0) {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.days}</span>d <span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m</span>`;
@@ -71,6 +70,13 @@ dt = notWorkingDate ? notWorkingDate : dateIos;
         if(t.total<=0){
           clearInterval(timeinterval);
         }
+
+        if (t.seconds % 5 == 0) {
+          $.ajax({
+            url: 'events/'+id+'/refreshusers', 
+            })
+        }
+        
     },1000);
   }
 

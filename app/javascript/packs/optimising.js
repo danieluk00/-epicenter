@@ -25,6 +25,12 @@ const optimisingAnimation = () => {
         window.location.replace("/confirmation?event="+id);
     }, 9000);
 
+    document.getElementById('skip').addEventListener('click', e => {
+      console.log('abc')
+      window.location.replace("/confirmation?event="+id);
+    })
+  
+
   }
 }
 
