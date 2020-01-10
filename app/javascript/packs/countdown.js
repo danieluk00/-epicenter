@@ -51,6 +51,7 @@ dt = notWorkingDate ? notWorkingDate : dateIos;
   let clock = document.getElementById('clockdiv');
 
   function initializeClock(endtime){
+
     var timeinterval = setInterval(function(){
       var t = getTimeRemaining(endtime);
 
@@ -62,19 +63,12 @@ dt = notWorkingDate ? notWorkingDate : dateIos;
           clock.innerHTML = `<span class="clock"><span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m <span class="hour">${t.seconds}</span>s</span>`;
         }
 
-        // clock.classList.add('animated','pulse')
-        //   setTimeout(function(){
-        //     clock.classList.remove('animated','pulse')
-        //   }, 900);
-
         if(t.total<=0){
           clearInterval(timeinterval);
         }
 
-        if (t.seconds % 5 == 0) {
-          $.ajax({
-            url: 'events/'+id+'/refreshusers', 
-            })
+        if (t.seconds % 20 == 0) {
+          location.reload();
         }
         
     },1000);
