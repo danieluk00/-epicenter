@@ -67,7 +67,7 @@ dt = notWorkingDate ? notWorkingDate : dateIos;
           clearInterval(timeinterval);
         }
 
-        if (t.seconds % 20 == 0) {
+        if (t.seconds % 20 == 0 && t.total != 0) {
           location.reload();
         }
         
