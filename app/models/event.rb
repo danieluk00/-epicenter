@@ -65,7 +65,13 @@ class Event < ApplicationRecord
     puts places.sort_by { |place| place.rating.to_f }.reverse.first(5)
 
     # We order the places returned by rating and randomly choose one place randomly from the top five.
-    final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(5).sample
+    count = 0
+    final_place = nil
+    until (final_place != nil && final_place.name != self.previous_venue) || count>10
+      final_place = places.sort_by { |place| place.rating.to_f }.reverse.first(5).sample
+      puts final_place.name
+      count += 1
+    end
 
     # We save all the information of the final_place
     if final_place

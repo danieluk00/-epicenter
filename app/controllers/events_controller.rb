@@ -10,6 +10,7 @@ require 'securerandom'
     # Create the event
     @event = Event.new(secure_params_event)
     @event.event_token = SecureRandom.hex(10)
+    @event.spins = 2
     # Create the first user and assign them to the event as organiser
     create_organiser
     # Save the user and event
@@ -55,12 +56,14 @@ require 'securerandom'
   def spinagain
     puts 'Spin again'
     @event = Event.find_by(event_token: params[:event_token])
+    @event.previous_venue = @event.venue_name
     @event.venue_name = nil
     @event.venue_address = nil
     @event.venue_rating = nil
     @event.venue_map_link = nil
     @event.latitude = nil
     @event.longitude = nil
+    @event.spins -= 1
     @event.save
     redirect_to confirmation_path + "?event=#{@event.event_token}"
   end
