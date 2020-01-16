@@ -11,6 +11,7 @@ require 'securerandom'
     @event = Event.new(secure_params_event)
     @event.event_token = SecureRandom.hex(10)
     @event.spins = 2
+    @event.previous_venue = nil
     # Create the first user and assign them to the event as organiser
     create_organiser
     # Save the user and event
