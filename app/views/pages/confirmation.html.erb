@@ -51,5 +51,11 @@
     <button class="btn main-button confirmation-button"><%=  link_to "Get directions", link %></button>
     <% end %>
   </div>
+
+  <% if cookies["event+#{@event.event_token}"] == 'true' %>
+  <%= form_tag spinagain_path(@event.event_token), method: :post, data: {confirm: "Are you sure you want to change the location?"} do %>
+    <button class="main-button end-countdown">Spin again!</button>
+  <% end %>
+<% end %>
   
 </div>
