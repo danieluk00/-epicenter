@@ -8,8 +8,10 @@
        <%= image_tag('waiting.png') %>
       </div>
 
-      <div id="clockdiv"></div>
-      <h2 class="title-h2-center">Time left to join</h2>
+      <div id="clockwrapper">
+        <div id="clockdiv"></div>
+        <h2 id="timelefttext" class="title-h2-center"></h2>
+      </div>
 
       <%= render 'shared/users' %>
 

@@ -62,6 +62,7 @@ dt = notWorkingDate ? notWorkingDate : dateIos;
         } else {
           clock.innerHTML = `<span class="clock"><span class="hour">${t.hours}</span>h <span class="hour">${t.minutes}</span>m <span class="hour">${t.seconds}</span>s</span>`;
         }
+        document.getElementById('timelefttext').innerText = "Time left to join";
 
         if(t.total<=0){
           clearInterval(timeinterval);
