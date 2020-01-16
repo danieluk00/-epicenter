@@ -57,7 +57,7 @@ class Event < ApplicationRecord
     # We query Google for venues (of the chosen type) in a radius of 100 meters from the epicenter. If there are less than five, we double the radius and try again (to a max radius of 2000m).
     radius=100
     places = []
-    while places.length<=5 && radius<2000 do
+    while places.length<=5 && radius<4000 do
       places = @client.spots(event_latitude, event_longitude, :radius => radius, :types => [venue_type.downcase])
       radius = radius * 2
     end
